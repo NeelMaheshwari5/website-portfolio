@@ -23,13 +23,6 @@ import {
 
 const nav = ["Work", "Projects", "Research", "Skills", "Contact"];
 
-const stats = [
-  { value: "3.67", label: "UIUC GPA" },
-  { value: "20%", label: "Review time reduction" },
-  { value: "3rd", label: "Engineering Open House" },
-  { value: "2027", label: "Expected graduation" }
-];
-
 const experience = [
   {
     company: "thyssenkrupp UHDE India Pvt. Ltd.",
@@ -301,24 +294,6 @@ export default function Home() {
               </a>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      <section className="border-y border-line bg-white">
-        <div className="section-shell grid grid-cols-2 gap-px md:grid-cols-4">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.07 }}
-              className="px-4 py-8 md:py-10"
-            >
-              <p className="font-display text-4xl font-semibold text-ink">{stat.value}</p>
-              <p className="mt-2 text-sm font-medium text-steel">{stat.label}</p>
-            </motion.div>
-          ))}
         </div>
       </section>
 
