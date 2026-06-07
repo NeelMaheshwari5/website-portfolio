@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -109,7 +110,7 @@ export default function ThyssenkruppPage() {
       <section className="py-20 md:py-28">
         <div className="section-shell">
           <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-            Scope of Work
+            What I Worked On
           </p>
           <h2 className="mt-3 max-w-3xl font-display text-3xl font-semibold text-ink md:text-4xl">
             From equipment fundamentals to engineering workflow improvement.
@@ -126,7 +127,7 @@ export default function ThyssenkruppPage() {
                 <h3 className="mt-5 font-display text-xl font-semibold text-ink">
                   {area.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-graphite">{area.text}</p>
+                <p className="mt-4 text-base leading-8 text-graphite">{area.text}</p>
               </article>
             ))}
           </div>
@@ -137,12 +138,12 @@ export default function ThyssenkruppPage() {
         <div className="section-shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-              Technical Investigation
+              How I Approached the Work
             </p>
             <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
-              Turning unfamiliar systems into review-ready engineering context.
+              Learning the system before judging the result.
             </h2>
-            <p className="mt-5 leading-8 text-graphite">
+            <p className="mt-5 text-lg leading-8 text-graphite">
               The internship began with background research and moved into applied
               engineering review. Each assignment required enough domain knowledge to
               tell whether a software result, specification, or vendor response made
@@ -158,7 +159,7 @@ export default function ThyssenkruppPage() {
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[8px] bg-field font-display text-sm font-semibold text-teal">
                   {index + 1}
                 </span>
-                <p className="text-sm leading-7 text-graphite">{step}</p>
+                <p className="text-base leading-8 text-graphite">{step}</p>
               </div>
             ))}
           </div>
@@ -173,7 +174,7 @@ export default function ThyssenkruppPage() {
               <h2 className="mt-5 font-display text-2xl font-semibold text-ink">
                 Cryogenic tank foundation
               </h2>
-              <p className="mt-4 leading-7 text-graphite">
+              <p className="mt-4 text-base leading-8 text-graphite">
                 Neel studied refrigerated liquefied gas storage systems from the ground
                 up: tank categories, use cases, material choices, component function,
                 and the standards used to evaluate design acceptability.
@@ -184,7 +185,7 @@ export default function ThyssenkruppPage() {
               <h2 className="mt-5 font-display text-2xl font-semibold text-ink">
                 NozzlePRO discrepancy work
               </h2>
-              <p className="mt-4 leading-7 text-graphite">
+              <p className="mt-4 text-base leading-8 text-graphite">
                 The software task centered on why updated formulas did not produce the
                 expected output shift. In-plane, out-plane, and torsional flexibility
                 factors remained unchanged, while axial flexibility differed sharply,
@@ -196,7 +197,7 @@ export default function ThyssenkruppPage() {
               <h2 className="mt-5 font-display text-2xl font-semibold text-ink">
                 Boiler systems learning
               </h2>
-              <p className="mt-4 leading-7 text-graphite">
+              <p className="mt-4 text-base leading-8 text-graphite">
                 To review boiler specifications with more confidence, Neel studied
                 boiler types, D-type boiler components, process schematics, direct and
                 indirect efficiency equations, and the role each component plays in
@@ -212,7 +213,7 @@ export default function ThyssenkruppPage() {
           <div className="rounded-[8px] bg-ink p-7 text-white">
             <Bot className="h-7 w-7 text-copper" />
             <h2 className="mt-5 font-display text-2xl font-semibold">RUDY workflow</h2>
-            <p className="mt-4 leading-7 text-white/72">
+            <p className="mt-4 text-lg leading-8 text-white/72">
               RUDY helped convert large technical document packages into structured
               TBE-TR parameters. Neel reviewed the generated entries against source
               specifications, marked vendor-specific cases for adjustment, and helped
@@ -229,7 +230,7 @@ export default function ThyssenkruppPage() {
             <h2 className="mt-5 font-display text-2xl font-semibold text-ink">
               Engineering takeaways
             </h2>
-            <ul className="mt-5 space-y-4 text-sm leading-7 text-graphite">
+            <ul className="mt-5 space-y-4 text-base leading-8 text-graphite">
               <li>Software outputs are only useful when the underlying assumptions and formulas are understood.</li>
               <li>Codes, specifications, data sheets, and vendor offers all connect during technical bid evaluation.</li>
               <li>LLM-assisted review works best when paired with careful engineering validation.</li>
@@ -238,14 +239,78 @@ export default function ThyssenkruppPage() {
         </div>
       </section>
 
+      <section className="border-b border-line bg-white py-20 md:py-28">
+        <div className="section-shell">
+          <div className="mb-10 max-w-3xl">
+            <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+              Work Samples
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
+              Screenshots from the internship report.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-graphite">
+              These images document the references, component study, and review
+              interface used during the internship.
+            </p>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-2">
+            <figure className="overflow-hidden rounded-[8px] border border-line bg-paper shadow-panel">
+              <div className="relative aspect-[5/4]">
+                <Image
+                  src="/images/thyssenkrupp/nozzlepro-evidence.png"
+                  alt="NozzlePRO documentation used while reviewing stress intensification and flexibility factors"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="border-t border-line p-5 text-base leading-7 text-graphite">
+                NozzlePRO documentation referenced while comparing allowable loads,
+                stress intensification factors, and flexibility behavior.
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-[8px] border border-line bg-paper shadow-panel">
+              <div className="relative aspect-[5/4]">
+                <Image
+                  src="/images/thyssenkrupp/boiler-components-evidence.png"
+                  alt="Spreadsheet documenting D-type boiler components, descriptions, and significance"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="border-t border-line p-5 text-base leading-7 text-graphite">
+                Component-by-component study of a D-type boiler, including function,
+                location, and importance within the process.
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-[8px] border border-line bg-paper shadow-panel lg:col-span-2">
+              <div className="relative aspect-[16/8]">
+                <Image
+                  src="/images/thyssenkrupp/rudy-evidence.png"
+                  alt="RUDY interface showing technical specification review for a gas-fired boiler package"
+                  fill
+                  sizes="100vw"
+                  className="object-cover object-top"
+                />
+              </div>
+              <figcaption className="border-t border-line p-5 text-base leading-7 text-graphite">
+                RUDY&apos;s structured review interface for a gas-fired boiler package,
+                where generated specifications were checked against source documents.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 md:py-28">
         <div className="section-shell">
           <div className="mb-10 max-w-3xl">
             <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-              Review Workflow
+              Working with RUDY
             </p>
             <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
-              How the document-review work came together.
+              From source documents to checked specifications.
             </h2>
           </div>
           <div className="grid gap-5 md:grid-cols-3">
@@ -258,7 +323,7 @@ export default function ThyssenkruppPage() {
                 <h3 className="mt-5 font-display text-xl font-semibold text-ink">
                   {item.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-graphite">{item.text}</p>
+                <p className="mt-4 text-base leading-8 text-graphite">{item.text}</p>
               </article>
             ))}
           </div>

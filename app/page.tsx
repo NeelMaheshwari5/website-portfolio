@@ -31,6 +31,9 @@ const experience = [
     place: "Mumbai, India",
     date: "Jul 2024 - Aug 2024",
     href: "/work/thyssenkrupp",
+    logo: "/images/companies/thyssenkrupp.svg",
+    logoAlt: "thyssenkrupp logo",
+    darkLogoBand: true,
     icon: Gauge,
     overview:
       "Static equipment analysis spanning refrigerated gas storage, nozzle flexibility, engineering standards, and a faster boiler specification review workflow."
@@ -41,6 +44,9 @@ const experience = [
     place: "Pune, India",
     date: "Jun 2021 - Jul 2022",
     href: "/work/arcatron",
+    logo: "/images/companies/arcatron-frido.png",
+    logoAlt: "Frido, formerly Arcatron, logo",
+    darkLogoBand: false,
     icon: Ruler,
     overview:
       "Hands-on mobility product development involving CAD, manufacturing workflows, rapid prototyping, and wheelchair sub-assembly design."
@@ -316,9 +322,29 @@ export default function Home() {
                 >
                   <Link
                     href={item.href}
-                    className="flex h-full min-h-[310px] flex-col rounded-[8px] border border-line bg-white p-7 shadow-panel transition duration-300 hover:-translate-y-1 hover:border-teal/45 hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
+                    className="flex h-full min-h-[330px] cursor-pointer flex-col overflow-hidden rounded-[8px] border-2 border-ink/12 bg-white shadow-panel transition duration-300 hover:-translate-y-1 hover:border-teal hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
                   >
-                    <div className="flex items-start justify-between gap-4">
+                    <div
+                      className={`flex items-center justify-between border-b px-7 py-5 ${
+                        item.darkLogoBand
+                          ? "border-white/10 bg-ink"
+                          : "border-line bg-field/70"
+                      }`}
+                    >
+                      <div className="relative h-10 w-40">
+                        <Image
+                          src={item.logo}
+                          alt={item.logoAlt}
+                          fill
+                          sizes="160px"
+                          className="object-contain object-left"
+                        />
+                      </div>
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] border border-line bg-white text-teal transition group-hover:border-teal group-hover:bg-teal group-hover:text-white">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                    </div>
+                    <div className="flex flex-1 flex-col p-7">
                       <div>
                         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-copper">
                           {item.role}
@@ -330,14 +356,11 @@ export default function Home() {
                           {item.place} / {item.date}
                         </p>
                       </div>
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] bg-field text-teal transition group-hover:bg-teal group-hover:text-white">
-                        <Icon className="h-6 w-6" />
+                      <p className="mt-6 text-base leading-7 text-graphite">{item.overview}</p>
+                      <div className="mt-auto flex items-center justify-between rounded-[8px] bg-ink px-4 py-3 text-white transition group-hover:bg-teal">
+                        <span className="text-sm font-semibold">Open case study</span>
+                        <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
-                    </div>
-                    <p className="mt-7 text-base leading-7 text-graphite">{item.overview}</p>
-                    <div className="mt-auto flex items-center justify-between border-t border-line pt-6">
-                      <span className="text-sm font-semibold text-ink">View internship</span>
-                      <ArrowUpRight className="h-5 w-5 text-teal transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </div>
                   </Link>
                 </motion.div>
