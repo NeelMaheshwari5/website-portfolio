@@ -175,7 +175,7 @@ export default function ThyssenkruppPage() {
                 Cryogenic tank foundation
               </h2>
               <p className="mt-4 text-base leading-8 text-graphite">
-                Neel studied refrigerated liquefied gas storage systems from the ground
+                Refrigerated liquefied gas storage systems were studied from the ground
                 up: tank categories, use cases, material choices, component function,
                 and the standards used to evaluate design acceptability.
               </p>
@@ -198,7 +198,7 @@ export default function ThyssenkruppPage() {
                 Boiler systems learning
               </h2>
               <p className="mt-4 text-base leading-8 text-graphite">
-                To review boiler specifications with more confidence, Neel studied
+                To review boiler specifications with more confidence, I studied
                 boiler types, D-type boiler components, process schematics, direct and
                 indirect efficiency equations, and the role each component plays in
                 the operating cycle.
@@ -215,7 +215,7 @@ export default function ThyssenkruppPage() {
             <h2 className="mt-5 font-display text-2xl font-semibold">RUDY workflow</h2>
             <p className="mt-4 text-lg leading-8 text-white/72">
               RUDY helped convert large technical document packages into structured
-              TBE-TR parameters. Neel reviewed the generated entries against source
+              TBE-TR parameters. I reviewed the generated entries against source
               specifications, marked vendor-specific cases for adjustment, and helped
               make the process faster for boiler specification review.
             </p>

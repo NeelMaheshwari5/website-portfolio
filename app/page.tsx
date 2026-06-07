@@ -305,7 +305,7 @@ export default function Home() {
           <SectionTitle
             eyebrow="Professional Work"
             title="Engineering judgment across static equipment and mobility products."
-            text="Neel's experience combines technical analysis, CAD-heavy development, and manufacturing-aware prototyping in high-consequence mechanical contexts."
+            text="My experience combines technical analysis, CAD-heavy development, and manufacturing-aware prototyping in high-consequence mechanical contexts."
           />
           <div className="grid gap-5 md:grid-cols-2">
             {experience.map((item, index) => {
@@ -491,7 +491,7 @@ export default function Home() {
           <SectionTitle
             eyebrow="Technical Stack"
             title="A practical toolkit for design, analysis, fabrication, and controls."
-            text="The portfolio is organized around the tools and processes that show up repeatedly in Neel's work: CAD, programming, lab fabrication, and core mechanical engineering fundamentals."
+            text="The portfolio is organized around the tools and processes used repeatedly across my work: CAD, programming, lab fabrication, and core mechanical engineering fundamentals."
           />
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {skillGroups.map((group, index) => {

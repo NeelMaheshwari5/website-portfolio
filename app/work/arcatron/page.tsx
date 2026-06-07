@@ -56,6 +56,30 @@ const designDecisions = [
 
 const gearTypes = ["Spur", "Helical", "Bevel", "Herringbone", "Worm"];
 
+const cadImages = [
+  {
+    src: "/images/frido/wheelchair-cad-assembly.png",
+    alt: "SolidWorks CAD assembly of the foldable one-hand-drive wheelchair concept",
+    title: "Full SolidWorks assembly",
+    caption:
+      "A complete wheelchair assembly used to evaluate the frame, folding members, footrests, caster placement, and hand-wheel layout."
+  },
+  {
+    src: "/images/frido/wheelchair-cad-side.png",
+    alt: "Side view SolidWorks CAD model of the wheelchair concept",
+    title: "Side packaging view",
+    caption:
+      "A closer side view showing the coaxial wheel layout and the space needed around the rear wheels and front caster modules."
+  },
+  {
+    src: "/images/frido/wheelchair-cad-rear.png",
+    alt: "Rear three-quarter SolidWorks CAD model of the wheelchair concept",
+    title: "Rear mechanism view",
+    caption:
+      "A rear three-quarter view used to reason through axle routing, hand-wheel reach, and the folding constraints around the chair frame."
+  }
+];
+
 const nextSteps = [
   "Add a selector clutch that locks both hand-wheels together for easier straight-line travel.",
   "Evaluate a belt or chain transfer to reduce rod-end maintenance without sacrificing foldability.",
@@ -186,6 +210,52 @@ export default function FridoPage() {
 
       <section className="py-20 md:py-28">
         <div className="section-shell">
+          <div className="mb-10 max-w-3xl">
+            <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+              CAD Evidence
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
+              SolidWorks views that drove the design decisions.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-graphite">
+              These CAD views show the concept at the stage where the folding frame,
+              rear wheel layout, caster packaging, and one-hand drive mechanism could
+              be checked together as an assembly.
+            </p>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-2">
+            {cadImages.map((image, index) => (
+              <figure
+                key={image.src}
+                className={`overflow-hidden rounded-[8px] border border-line bg-white shadow-panel ${
+                  index === 0 ? "lg:col-span-2" : ""
+                }`}
+              >
+                <div className={`relative ${index === 0 ? "aspect-[16/8]" : "aspect-[16/9]"}`}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes={index === 0 ? "100vw" : "(min-width: 1024px) 50vw, 100vw"}
+                    className="object-cover object-left-top"
+                  />
+                </div>
+                <figcaption className="border-t border-line p-5">
+                  <h3 className="font-display text-xl font-semibold text-ink">
+                    {image.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-7 text-graphite">
+                    {image.caption}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <div className="section-shell">
           <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
             Designing Around the Fold
           </p>
@@ -224,7 +294,7 @@ export default function FridoPage() {
               Learning from the factory
             </h2>
             <p className="mt-5 text-base leading-8 text-graphite">
-              Before designing the chair, Neel followed the factory workflow from raw
+              Before designing the chair, I followed the factory workflow from raw
               steel tube preparation through cutting, bending, tack welding, powder
               coating, final assembly, and quality inspection. That exposure made the
               CAD work more grounded in how parts are actually held, joined, checked,
@@ -254,7 +324,7 @@ export default function FridoPage() {
             </h2>
             <p className="mt-5 text-base leading-8 text-white/75">
               SolidWorks became the main design environment for wheel, caster, frame,
-              footrest, armrest, seat, axle, and folding assemblies. Neel also learned
+              footrest, armrest, seat, axle, and folding assemblies. I also learned
               model slicing, PLA print preparation, nozzle and bed temperature setup,
               and three-axis printer calibration.
             </p>
@@ -278,7 +348,7 @@ export default function FridoPage() {
               Learning how different gears are modeled.
             </h2>
             <p className="mt-5 text-lg leading-8 text-graphite">
-              Before tackling the wheelchair assembly, Neel practiced modeling common
+              Before tackling the wheelchair assembly, I practiced modeling common
               gear geometries in SolidWorks. The exercises developed comfort with
               revolves, sweeps, helixes, cuts, mirrors, and circular patterns.
             </p>
@@ -311,7 +381,7 @@ export default function FridoPage() {
               Prototype-ready, but not released as a product.
             </h2>
             <p className="mt-5 text-lg leading-8 text-graphite">
-              Neel owned the concept from factory study through SolidWorks assemblies
+              I owned the concept from factory study through SolidWorks assemblies
               and bench-level validation, then presented it for internal prototyping.
               The company chose not to create a new SKU because regional demand was
               too narrow for a small manufacturer with portions of production
