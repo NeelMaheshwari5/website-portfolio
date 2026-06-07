@@ -39,17 +39,17 @@ const experience = [
       "Static equipment analysis spanning refrigerated gas storage, nozzle flexibility, engineering standards, and a faster boiler specification review workflow."
   },
   {
-    company: "Arcatron Mobility Pvt. Ltd.",
+    company: "Frido",
     role: "Research and Design Intern",
     place: "Pune, India",
     date: "Jun 2021 - Jul 2022",
     href: "/work/arcatron",
     logo: "/images/companies/arcatron-frido.png",
-    logoAlt: "Frido, formerly Arcatron, logo",
+    logoAlt: "Frido logo",
     darkLogoBand: false,
     icon: Ruler,
     overview:
-      "Hands-on mobility product development involving CAD, manufacturing workflows, rapid prototyping, and wheelchair sub-assembly design."
+      "Designed a foldable, one-hand-drive wheelchair concept while learning CAD, prototyping, factory workflows, and accessible product development."
   }
 ];
 
