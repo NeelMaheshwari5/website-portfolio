@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -29,24 +30,20 @@ const experience = [
     role: "Mechanical Static Intern",
     place: "Mumbai, India",
     date: "Jul 2024 - Aug 2024",
+    href: "/work/thyssenkrupp",
     icon: Gauge,
-    points: [
-      "Studied refrigerated liquefied gas tanks across materials, design, and governing standards.",
-      "Analyzed SIF/Flexibility differences in NozzlePRO and resolved axial flexibility miscalculations.",
-      "Developed and onboarded an LLM-assisted boiler specification review workflow that reduced review time by 20%."
-    ]
+    overview:
+      "Static equipment analysis spanning refrigerated gas storage, nozzle flexibility, engineering standards, and a faster boiler specification review workflow."
   },
   {
     company: "Arcatron Mobility Pvt. Ltd.",
     role: "Research and Design Intern",
     place: "Pune, India",
     date: "Jun 2021 - Jul 2022",
+    href: "/work/arcatron",
     icon: Ruler,
-    points: [
-      "Shadowed design leadership to observe full-cycle medical mobility product development.",
-      "Built fluency in manufacturing workflows, CAD tools, 3D printing, and iterative prototyping.",
-      "Designed wheelchair sub-assemblies contributing to a hemiplegic wheelchair engineered from scratch."
-    ]
+    overview:
+      "Hands-on mobility product development involving CAD, manufacturing workflows, rapid prototyping, and wheelchair sub-assembly design."
   }
 ];
 
@@ -308,40 +305,42 @@ export default function Home() {
             {experience.map((item, index) => {
               const Icon = item.icon;
               return (
-                <motion.article
+                <motion.div
                   key={item.company}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-80px" }}
                   variants={fadeUp}
                   transition={{ duration: 0.55, delay: index * 0.08 }}
-                  className="rounded-[8px] border border-line bg-white p-7 shadow-panel"
+                  className="group"
                 >
-                  <div className="mb-6 flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-copper">
-                        {item.role}
-                      </p>
-                      <h3 className="mt-2 font-display text-2xl font-semibold text-ink">
-                        {item.company}
-                      </h3>
-                      <p className="mt-2 text-sm text-steel">
-                        {item.place} / {item.date}
-                      </p>
+                  <Link
+                    href={item.href}
+                    className="flex h-full min-h-[310px] flex-col rounded-[8px] border border-line bg-white p-7 shadow-panel transition duration-300 hover:-translate-y-1 hover:border-teal/45 hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-copper">
+                          {item.role}
+                        </p>
+                        <h3 className="mt-2 font-display text-2xl font-semibold text-ink">
+                          {item.company}
+                        </h3>
+                        <p className="mt-2 text-sm text-steel">
+                          {item.place} / {item.date}
+                        </p>
+                      </div>
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] bg-field text-teal transition group-hover:bg-teal group-hover:text-white">
+                        <Icon className="h-6 w-6" />
+                      </div>
                     </div>
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] bg-field text-teal">
-                      <Icon className="h-6 w-6" />
+                    <p className="mt-7 text-base leading-7 text-graphite">{item.overview}</p>
+                    <div className="mt-auto flex items-center justify-between border-t border-line pt-6">
+                      <span className="text-sm font-semibold text-ink">View internship</span>
+                      <ArrowUpRight className="h-5 w-5 text-teal transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </div>
-                  </div>
-                  <ul className="space-y-3 text-sm leading-6 text-graphite">
-                    {item.points.map((point) => (
-                      <li key={point} className="flex gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.article>
+                  </Link>
+                </motion.div>
               );
             })}
           </div>
