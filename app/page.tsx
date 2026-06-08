@@ -8,8 +8,11 @@ import {
   Award,
   BookOpen,
   Box,
+  BriefcaseBusiness,
   CircuitBoard,
   Cpu,
+  FlaskConical,
+  FolderKanban,
   Gauge,
   GraduationCap,
   Hammer,
@@ -21,8 +24,6 @@ import {
   Trophy,
   Wrench
 } from "lucide-react";
-
-const nav = ["Work", "Projects", "Research", "Skills", "Contact"];
 
 const experience = [
   {
@@ -227,27 +228,9 @@ export default function Home() {
   return (
     <main className="noise overflow-hidden">
       <nav className="fixed left-0 right-0 top-0 z-40 border-b border-white/35 bg-paper/78 backdrop-blur-xl">
-        <div className="section-shell flex h-16 items-center justify-between">
+        <div className="section-shell flex h-16 items-center">
           <a href="#top" className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-ink">
             NM
-          </a>
-          <div className="hidden items-center gap-7 md:flex">
-            {nav.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-sm font-medium text-graphite transition hover:text-teal"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-          <a
-            href="mailto:neel5@illinois.edu"
-            className="inline-flex h-10 items-center gap-2 rounded-[8px] bg-ink px-4 text-sm font-semibold text-white transition hover:bg-teal"
-          >
-            <Mail className="h-4 w-4" />
-            Contact
           </a>
         </div>
       </nav>
@@ -280,21 +263,59 @@ export default function Home() {
               Mechanical engineer building practical systems across CAD, thermal testing,
               robotic 3D printing, and product development.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-9 grid max-w-3xl grid-cols-2 gap-3 sm:flex sm:flex-wrap">
               <a
-                href="#projects"
-                className="inline-flex h-12 items-center gap-2 rounded-[8px] bg-teal px-5 text-sm font-semibold text-white shadow-soft transition hover:bg-ink"
+                href="#work"
+                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] bg-teal px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-ink sm:px-5"
               >
-                View Projects
+                <span className="inline-flex items-center gap-2">
+                  <BriefcaseBusiness className="h-4 w-4" />
+                  Internships
+                </span>
                 <ArrowUpRight className="h-4 w-4" />
               </a>
               <a
                 href="https://www.linkedin.com/in/neel-maheshwari-9b9402245"
-                className="inline-flex h-12 items-center gap-2 rounded-[8px] border border-ink/15 bg-white/72 px-5 text-sm font-semibold text-ink backdrop-blur transition hover:border-teal hover:text-teal"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white/78 px-4 py-3 text-sm font-semibold text-ink backdrop-blur transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
               >
-                <Linkedin className="h-4 w-4" />
-                LinkedIn
+                <span className="inline-flex items-center gap-2">
+                  <Linkedin className="h-4 w-4" />
+                  LinkedIn
+                </span>
+                <ArrowUpRight className="h-4 w-4" />
               </a>
+              <a
+                href="#projects"
+                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white/78 px-4 py-3 text-sm font-semibold text-ink backdrop-blur transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <FolderKanban className="h-4 w-4" />
+                  Projects
+                </span>
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#research"
+                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white/78 px-4 py-3 text-sm font-semibold text-ink backdrop-blur transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <FlaskConical className="h-4 w-4" />
+                  Research
+                </span>
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <Link
+                href="/coursework"
+                className="col-span-2 inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] bg-ink px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-copper sm:col-span-1 sm:px-5"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <BookOpen className="h-4 w-4" />
+                  Coursework
+                </span>
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
             </div>
           </motion.div>
         </div>
