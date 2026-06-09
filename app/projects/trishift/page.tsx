@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   ArrowLeft,
   CheckCircle2,
+  ClipboardCheck,
   Cog,
   Gauge,
   Layers3,
@@ -39,6 +40,24 @@ const performance = [
   { label: "Efficiency", result: "Passed 60% target" },
   { label: "Durability", result: "Passed drop test" },
   { label: "Cost", result: "$23.92" }
+];
+
+const requirements = [
+  { event: "Strength", target: "Lift 5 kg on an incline", priority: "High" },
+  { event: "Speed", target: "Reach at least 0.75 m/s", priority: "Low" },
+  { event: "Agility", target: "Complete at least 5 obstacle traversals", priority: "Moderate" },
+  { event: "Efficiency", target: "Achieve at least 60% efficiency", priority: "Moderate" },
+  {
+    event: "Durability",
+    target: "Survive 3 kg from 0.25 m and 2 kg from 0.375 m",
+    priority: "Moderate"
+  },
+  { event: "Cost", target: "Keep the total build at or below $25", priority: "Moderate" },
+  {
+    event: "Quality",
+    target: "Provide a 10 cm x 10 cm x 10 cm payload compartment",
+    priority: "Low"
+  }
 ];
 
 export default function TriShiftPage() {
@@ -249,6 +268,57 @@ export default function TriShiftPage() {
               a minimum safety factor of 3.604 and a maximum displacement of
               0.377 mm, consistent with the vehicle surviving the physical drop test.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-line bg-white py-20 md:py-28">
+        <div className="section-shell">
+          <ClipboardCheck className="h-7 w-7 text-teal" />
+          <p className="mt-5 font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+            Heptathlon Requirements
+          </p>
+          <h2 className="mt-3 max-w-4xl font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
+            Seven events defined the vehicle&apos;s design envelope.
+          </h2>
+          <p className="mt-6 max-w-4xl text-lg leading-9 text-graphite">
+            The assigned customer prioritized strength most heavily, while agility,
+            efficiency, durability, and cost carried moderate importance. Speed and
+            payload quality remained requirements, but had lower priority when design
+            tradeoffs were necessary.
+          </p>
+          <div className="mt-10 overflow-hidden rounded-[8px] border border-line bg-white shadow-panel">
+            <div className="hidden grid-cols-[0.7fr_1.6fr_0.7fr] border-b border-line bg-ink px-6 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white md:grid">
+              <span>Event</span>
+              <span>Requirement</span>
+              <span>Priority</span>
+            </div>
+            <div className="divide-y divide-line">
+              {requirements.map((requirement) => (
+                <div
+                  key={requirement.event}
+                  className="grid gap-3 px-5 py-5 md:grid-cols-[0.7fr_1.6fr_0.7fr] md:items-center md:px-6"
+                >
+                  <h3 className="font-display text-lg font-semibold text-ink">
+                    {requirement.event}
+                  </h3>
+                  <p className="text-base leading-7 text-graphite">
+                    {requirement.target}
+                  </p>
+                  <span
+                    className={`w-fit rounded-[8px] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] ${
+                      requirement.priority === "High"
+                        ? "bg-copper/15 text-copper"
+                        : requirement.priority === "Moderate"
+                          ? "bg-teal/12 text-teal"
+                          : "bg-field text-steel"
+                    }`}
+                  >
+                    {requirement.priority}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
