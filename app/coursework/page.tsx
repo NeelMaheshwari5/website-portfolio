@@ -15,16 +15,6 @@ import {
 
 const featuredCourses = [
   {
-    code: "ME 170",
-    title: "Computer Aided Design",
-    href: "/coursework/me-170"
-  },
-  {
-    code: "ME 270",
-    title: "Design for Manufacturability",
-    href: "/coursework/me-270"
-  },
-  {
     code: "ME 370",
     title: "Mechanical Design I",
     href: "/coursework/me-370"

@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function ME170Page() {
-  return null;
+  redirect("/projects/supercaddy");
 }

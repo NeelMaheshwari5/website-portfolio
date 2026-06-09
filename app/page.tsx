@@ -20,6 +20,7 @@ import {
   Mail,
   MapPin,
   Printer,
+  Recycle,
   Ruler,
   Trophy,
   Wrench
@@ -84,6 +85,26 @@ const projects = [
     image: "/images/frido/wheelchair-cad-assembly.png",
     summary:
       "A foldable wheelchair concept that translates one-handed input into coordinated motion at both rear wheels."
+  },
+  {
+    title: "SuperCaddy",
+    tag: "ME 170 Product Design",
+    date: "Fall 2023",
+    href: "/projects/supercaddy",
+    icon: Ruler,
+    image: "/images/supercaddy/assembly.jpg",
+    summary:
+      "A foldable, wall-mounted shower caddy with refillable dispensers, designed for dorm living and users with low hand dexterity."
+  },
+  {
+    title: "Fruit Reamer",
+    tag: "ME 270 Design Challenge",
+    date: "Spring 2024",
+    href: "/projects/fruit-reamer",
+    icon: Recycle,
+    image: "/images/fruit-reamer/assembly-cad.png",
+    summary:
+      "A manual citrus juicer that repurposes a coffee grinder's crank mechanism through design for disassembly and circular material use."
   }
 ];
 
@@ -387,7 +408,7 @@ export default function Home() {
             text="These builds highlight practical prototyping, mechanical design, controls thinking, and the discipline to move from constraints to working demonstrations."
             tone="dark"
           />
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {projects.map((project, index) => {
               const Icon = project.icon;
               return (
