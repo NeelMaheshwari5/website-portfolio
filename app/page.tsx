@@ -16,6 +16,7 @@ import {
   Gauge,
   GraduationCap,
   Hammer,
+  PackageOpen,
   Linkedin,
   Mail,
   MapPin,
@@ -115,6 +116,16 @@ const projects = [
     image: "/images/trishift/completed-vehicle.png",
     summary:
       "A competition vehicle with a constant-mesh transmission that shifts between high torque, high speed, and reverse."
+  },
+  {
+    title: "ProteinPal",
+    tag: "ME 370 Mechanical Design",
+    date: "Fall 2025",
+    href: "/projects/proteinpal",
+    icon: PackageOpen,
+    image: "/images/proteinpal/prototype.png",
+    summary:
+      "A single-motor walking robot that uses Klann-linkage legs and twin augers to dispense protein bars at fixed travel intervals."
   }
 ];
 

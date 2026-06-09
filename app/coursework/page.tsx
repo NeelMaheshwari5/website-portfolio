@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   ArrowLeft,
-  ArrowUpRight,
   BookOpen,
   Boxes,
   Code2,
@@ -12,14 +11,6 @@ import {
   Ruler,
   Shapes
 } from "lucide-react";
-
-const featuredCourses = [
-  {
-    code: "ME 370",
-    title: "Mechanical Design I",
-    href: "/coursework/me-370"
-  }
-];
 
 const mechanicalCourses = [
   {
@@ -137,42 +128,6 @@ export default function CourseworkPage() {
           </div>
         </div>
       </header>
-
-      <section className="border-b border-line bg-field py-20 md:py-28">
-        <div className="section-shell">
-          <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-            Course Pages
-          </p>
-          <h2 className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
-            Selected mechanical design coursework.
-          </h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {featuredCourses.map((course) => (
-              <Link
-                key={course.code}
-                href={course.href}
-                className="group flex min-h-48 flex-col rounded-[8px] border-2 border-ink/12 bg-white p-6 shadow-panel transition duration-300 hover:-translate-y-1 hover:border-teal hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <span className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-copper">
-                    {course.code}
-                  </span>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-[8px] bg-field text-teal transition group-hover:bg-teal group-hover:text-white">
-                    <BookOpen className="h-5 w-5" />
-                  </div>
-                </div>
-                <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
-                  {course.title}
-                </h3>
-                <div className="mt-auto flex items-center justify-between border-t border-line pt-5">
-                  <span className="text-sm font-semibold text-ink">Read more</span>
-                  <ArrowUpRight className="h-5 w-5 text-teal transition group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="py-20 md:py-28">
         <div className="section-shell">
