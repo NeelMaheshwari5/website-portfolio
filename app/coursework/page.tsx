@@ -180,7 +180,7 @@ export default function CourseworkPage() {
                   {course.title}
                 </h3>
                 <div className="mt-auto flex items-center justify-between border-t border-line pt-5">
-                  <span className="text-sm font-semibold text-ink">Open course page</span>
+                  <span className="text-sm font-semibold text-ink">Read more</span>
                   <ArrowUpRight className="h-5 w-5 text-teal transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>
               </Link>

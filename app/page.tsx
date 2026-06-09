@@ -59,43 +59,31 @@ const projects = [
     title: "NovoPrint",
     tag: "ASME Product Development Team",
     date: "Jan 2025 - May 2025",
+    href: "/projects/novoprint",
     icon: Printer,
-    image: "/images/engineering-hero.png",
+    image: "/images/novoprint/assembled-arm.jpeg",
     summary:
-      "Open-source, multi-extruder 6-DOF robotic arm for 3D printing, built with ASME at UIUC.",
-    bullets: [
-      "Designed and built a working multi-axis robotic arm prototype.",
-      "Soldered sensors and servo motors daisy chained to the power supply.",
-      "Placed 3rd at Spring 2025 UIUC Engineering Open House."
-    ]
+      "A mostly 3D-printed, 6-DOF robotic arm developed to explore non-planar printing on curved and angled surfaces."
   },
   {
     title: "Autonomous Challenge",
     tag: "ASME XRC",
     date: "Feb 2025 - Mar 2025",
+    href: "/projects/autonomous-challenge",
     icon: CircuitBoard,
     image: "/images/engineering-hero.png",
     summary:
-      "Competition vehicle control system developed within HyperSkill software and rulebook constraints.",
-    bullets: [
-      "Designed a virtual autonomous vehicle under strict competition limits.",
-      "Programmed block-based navigation logic for practice courses.",
-      "Raced autonomously at E-Fest Tech Connect on Mar 22, 2025."
-    ]
+      "A rule-constrained autonomous vehicle programmed in HyperSkill to navigate competition courses without driver input."
   },
   {
     title: "Hemiplegic Wheelchair",
     tag: "Mobility Product Design",
     date: "2021 - 2022",
+    href: "/projects/hemiplegic-wheelchair",
     icon: Wrench,
-    image: "/images/engineering-hero.png",
+    image: "/images/frido/wheelchair-cad-assembly.png",
     summary:
-      "Sub-assembly design and prototyping work for an accessibility-focused wheelchair platform.",
-    bullets: [
-      "Modeled components in SolidWorks and Fusion 360.",
-      "Supported CAD and 3D printing tasks from concept through prototype.",
-      "Connected manufacturing feedback to mechanical design decisions."
-    ]
+      "A foldable wheelchair concept that translates one-handed input into coordinated motion at both rear wheels."
   }
 ];
 
@@ -379,7 +367,7 @@ export default function Home() {
                       </div>
                       <p className="mt-6 text-base leading-7 text-graphite">{item.overview}</p>
                       <div className="mt-auto flex items-center justify-between rounded-[8px] bg-ink px-4 py-3 text-white transition group-hover:bg-teal">
-                        <span className="text-sm font-semibold">Open case study</span>
+                        <span className="text-sm font-semibold">Read more</span>
                         <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
                     </div>
@@ -399,58 +387,66 @@ export default function Home() {
             text="These builds highlight practical prototyping, mechanical design, controls thinking, and the discipline to move from constraints to working demonstrations."
             tone="dark"
           />
-          <div className="grid gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => {
               const Icon = project.icon;
               return (
-                <motion.article
+                <motion.div
                   key={project.title}
                   initial={{ opacity: 0, y: 36 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.65, delay: index * 0.08 }}
-                  className="group grid overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.045] md:grid-cols-[0.95fr_1.05fr]"
+                  className="group"
                 >
-                  <div className="image-shine relative min-h-[260px]">
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} engineering project visual`}
-                      fill
-                      sizes="(min-width: 768px) 46vw, 100vw"
-                      className="object-cover"
-                      style={{ objectPosition: index === 0 ? "62% center" : index === 1 ? "82% center" : "52% center" }}
-                    />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,32,28,0.04),rgba(23,32,28,0.58))]" />
-                    <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-[8px] bg-white/90 px-3 py-2 text-sm font-semibold text-ink">
-                      <Icon className="h-4 w-4 text-teal" />
-                      {project.tag}
-                    </div>
-                  </div>
-                  <div className="p-7 md:p-9">
-                    <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
-                      <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-copper">
-                          {project.date}
-                        </p>
-                        <h3 className="mt-2 font-display text-3xl font-semibold">{project.title}</h3>
+                  <Link
+                    href={project.href}
+                    className="flex h-full min-h-[510px] cursor-pointer flex-col overflow-hidden rounded-[8px] border border-white/14 bg-white/[0.055] transition duration-300 hover:-translate-y-1 hover:border-teal hover:bg-white/[0.08] hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper focus-visible:ring-offset-4 focus-visible:ring-offset-ink"
+                  >
+                    <div className="image-shine relative aspect-[4/3] overflow-hidden border-b border-white/12">
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} engineering project visual`}
+                        fill
+                        sizes="(min-width: 1024px) 32vw, (min-width: 768px) 48vw, 100vw"
+                        className={`object-cover transition duration-500 group-hover:scale-[1.025] ${
+                          project.title === "NovoPrint"
+                            ? "object-center"
+                            : project.title === "Autonomous Challenge"
+                              ? "object-[78%_center]"
+                              : "object-center"
+                        }`}
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,32,28,0.02),rgba(23,32,28,0.5))]" />
+                      <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-[8px] bg-white/92 px-3 py-2 text-xs font-semibold text-ink shadow-panel">
+                        <Icon className="h-4 w-4 text-teal" />
+                        {project.tag}
                       </div>
-                      {project.title === "NovoPrint" && (
-                        <div className="flex items-center gap-2 rounded-[8px] border border-white/14 px-3 py-2 text-sm text-white/78">
-                          <Trophy className="h-4 w-4 text-copper" />
-                          Distinguished Technology Award
-                        </div>
-                      )}
                     </div>
-                    <p className="max-w-2xl text-lg leading-8 text-white/78">{project.summary}</p>
-                    <ul className="mt-7 grid gap-3 text-sm leading-6 text-white/72 md:grid-cols-3">
-                      {project.bullets.map((bullet) => (
-                        <li key={bullet} className="border-l border-white/16 pl-4">
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.article>
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-copper">
+                            {project.date}
+                          </p>
+                          <h3 className="mt-2 font-display text-2xl font-semibold">
+                            {project.title}
+                          </h3>
+                        </div>
+                        {project.title === "NovoPrint" && (
+                          <Trophy className="mt-1 h-5 w-5 shrink-0 text-copper" />
+                        )}
+                      </div>
+                      <p className="mt-5 text-base leading-7 text-white/72">
+                        {project.summary}
+                      </p>
+                      <div className="mt-auto flex items-center justify-between border-t border-white/14 pt-5">
+                        <span className="text-sm font-semibold text-white">Read more</span>
+                        <ArrowUpRight className="h-5 w-5 text-copper transition group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
               );
             })}
           </div>
