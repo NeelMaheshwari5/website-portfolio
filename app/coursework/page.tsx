@@ -18,11 +18,6 @@ const featuredCourses = [
     code: "ME 370",
     title: "Mechanical Design I",
     href: "/coursework/me-370"
-  },
-  {
-    code: "ME 371",
-    title: "Mechanical Design II",
-    href: "/coursework/me-371"
   }
 ];
 

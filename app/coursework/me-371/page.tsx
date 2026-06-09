@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function ME371Page() {
-  return null;
+  redirect("/projects/trishift");
 }

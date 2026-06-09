@@ -105,6 +105,16 @@ const projects = [
     image: "/images/fruit-reamer/assembly-cad.png",
     summary:
       "A manual citrus juicer that repurposes a coffee grinder's crank mechanism through design for disassembly and circular material use."
+  },
+  {
+    title: "TriShift",
+    tag: "ME 371 Mechanical Design",
+    date: "Spring 2026",
+    href: "/projects/trishift",
+    icon: Gauge,
+    image: "/images/trishift/completed-vehicle.png",
+    summary:
+      "A competition vehicle with a constant-mesh transmission that shifts between high torque, high speed, and reverse."
   }
 ];
 
@@ -408,7 +418,7 @@ export default function Home() {
             text="These builds highlight practical prototyping, mechanical design, controls thinking, and the discipline to move from constraints to working demonstrations."
             tone="dark"
           />
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => {
               const Icon = project.icon;
               return (
