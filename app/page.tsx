@@ -280,23 +280,16 @@ export default function Home() {
       </nav>
 
       <section id="top" className="relative min-h-screen overflow-hidden bg-field pt-16">
-        <div className="absolute inset-y-0 right-0 w-full opacity-[0.14] md:w-[54%] md:opacity-100">
-          <Image
-            src="/images/proteinpal/prototype.png"
-            alt="ProteinPal mechanical prototype showing its gears, augers, linkage legs, and protective housing"
-            fill
-            priority
-            sizes="(min-width: 768px) 54vw, 100vw"
-            className="object-contain object-right"
-          />
-        </div>
         <div className="absolute inset-y-0 left-0 w-1 bg-copper" />
+        <div className="absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(103,117,130,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(103,117,130,0.1)_1px,transparent_1px)] [background-size:32px_32px]" />
+        <div className="absolute right-[8%] top-[18%] hidden h-48 w-48 border border-steel/20 lg:block" />
+        <div className="absolute right-[16%] top-[31%] hidden h-48 w-48 border border-copper/35 lg:block" />
         <div className="section-shell relative z-10 flex min-h-[calc(100vh-4rem)] items-center pb-20 pt-16">
           <motion.div
             initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-3xl md:max-w-[58%]"
+            className="max-w-4xl"
           >
             <div className="mb-7 inline-flex items-center gap-2 rounded-[8px] border border-line bg-white px-3 py-2 text-sm font-medium text-graphite shadow-panel">
               <MapPin className="h-4 w-4 text-teal" />
