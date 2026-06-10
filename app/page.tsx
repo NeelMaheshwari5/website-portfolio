@@ -39,7 +39,8 @@ const experience = [
     darkLogoBand: true,
     icon: Gauge,
     overview:
-      "Static equipment analysis spanning refrigerated gas storage, nozzle flexibility, engineering standards, and a faster boiler specification review workflow."
+      "Static equipment analysis spanning refrigerated gas storage, nozzle flexibility, engineering standards, and a faster boiler specification review workflow.",
+    skills: ["Static equipment", "Nozzle analysis", "Engineering codes", "Technical bid review", "LLM validation"]
   },
   {
     company: "Frido",
@@ -52,7 +53,8 @@ const experience = [
     darkLogoBand: false,
     icon: Ruler,
     overview:
-      "Designed a foldable, one-hand-drive wheelchair concept while learning CAD, prototyping, factory workflows, and accessible product development."
+      "Designed a foldable, one-hand-drive wheelchair concept while learning CAD, prototyping, factory workflows, and accessible product development.",
+    skills: ["SolidWorks", "Fusion 360", "Mechanism design", "3D printing", "Design for accessibility"]
   }
 ];
 
@@ -65,7 +67,8 @@ const projects = [
     icon: Printer,
     image: "/images/novoprint/assembled-arm.jpeg",
     summary:
-      "A mostly 3D-printed, 6-DOF robotic arm developed to explore non-planar printing on curved and angled surfaces."
+      "A mostly 3D-printed, 6-DOF robotic arm developed to explore non-planar printing on curved and angled surfaces.",
+    skills: ["Fusion 360", "CAN bus", "3D printing", "Gearbox design", "System testing"]
   },
   {
     title: "Autonomous Challenge",
@@ -75,7 +78,8 @@ const projects = [
     icon: CircuitBoard,
     image: "/images/engineering-hero.png",
     summary:
-      "A rule-constrained autonomous vehicle programmed in HyperSkill to navigate competition courses without driver input."
+      "A rule-constrained autonomous vehicle programmed in HyperSkill to navigate competition courses without driver input.",
+    skills: ["Control logic", "Autonomous systems", "Constraint analysis", "Iterative testing"]
   },
   {
     title: "Hemiplegic Wheelchair",
@@ -85,7 +89,8 @@ const projects = [
     icon: Wrench,
     image: "/images/frido/wheelchair-cad-assembly.png",
     summary:
-      "A foldable wheelchair concept that translates one-handed input into coordinated motion at both rear wheels."
+      "A foldable wheelchair concept that translates one-handed input into coordinated motion at both rear wheels.",
+    skills: ["Accessible design", "CAD assemblies", "Mechanism packaging", "Manufacturing feedback"]
   },
   {
     title: "SuperCaddy",
@@ -95,7 +100,8 @@ const projects = [
     icon: Ruler,
     image: "/images/supercaddy/assembly.jpg",
     summary:
-      "A foldable, wall-mounted shower caddy with refillable dispensers, designed for dorm living and users with low hand dexterity."
+      "A foldable, wall-mounted shower caddy with refillable dispensers, designed for dorm living and users with low hand dexterity.",
+    skills: ["User research", "Concept selection", "GD&T", "Tolerance analysis", "Design for manufacturing"]
   },
   {
     title: "Fruit Reamer",
@@ -105,7 +111,8 @@ const projects = [
     icon: Recycle,
     image: "/images/fruit-reamer/assembly-cad.png",
     summary:
-      "A manual citrus juicer that repurposes a coffee grinder's crank mechanism through design for disassembly and circular material use."
+      "A manual citrus juicer that repurposes a coffee grinder's crank mechanism through design for disassembly and circular material use.",
+    skills: ["Circular design", "Design for disassembly", "Material selection", "CAD", "Design of experiments"]
   },
   {
     title: "TriShift",
@@ -115,7 +122,8 @@ const projects = [
     icon: Gauge,
     image: "/images/trishift/completed-vehicle.png",
     summary:
-      "A competition vehicle with a constant-mesh transmission that shifts between high torque, high speed, and reverse."
+      "A competition vehicle with a constant-mesh transmission that shifts between high torque, high speed, and reverse.",
+    skills: ["Gear-train design", "Machine components", "FEA", "Tradeoff analysis", "Physical testing"]
   },
   {
     title: "ProteinPal",
@@ -125,7 +133,8 @@ const projects = [
     icon: PackageOpen,
     image: "/images/proteinpal/prototype.png",
     summary:
-      "A single-motor walking robot that uses Klann-linkage legs and twin augers to dispense protein bars at fixed travel intervals."
+      "A single-motor walking robot that uses Klann-linkage legs and twin augers to dispense protein bars at fixed travel intervals.",
+    skills: ["Linkage analysis", "Gear ratios", "Auger design", "CAD integration", "Prototype calibration"]
   }
 ];
 
@@ -135,7 +144,8 @@ const research = [
     date: "May 2025 - Jul 2025",
     text:
       "Worked with graduate students under Dr. Craig Bradshaw to build compressor testing infrastructure, assemble electrical components and housings, and test a smaller isobutane load stand.",
-    tags: ["Compressor testing", "Instrumentation", "Thermal systems", "Load stands"]
+    tags: ["Compressor testing", "Instrumentation", "Thermal systems", "Load stands"],
+    skills: ["Test-stand assembly", "Instrumentation", "Compressor testing", "Electrical housings", "Lab troubleshooting"]
   }
 ];
 
@@ -395,7 +405,7 @@ export default function Home() {
                         <Icon className="h-5 w-5" />
                       </div>
                     </div>
-                    <div className="flex flex-1 flex-col p-7">
+                    <div className="relative flex flex-1 flex-col overflow-hidden p-7">
                       <div>
                         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-copper">
                           {item.role}
@@ -411,6 +421,26 @@ export default function Home() {
                       <div className="mt-auto flex items-center justify-between rounded-[8px] bg-ink px-4 py-3 text-white transition group-hover:bg-teal">
                         <span className="text-sm font-semibold">Read more</span>
                         <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+                      <div className="absolute inset-0 flex translate-y-3 flex-col bg-ink p-7 text-white opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-copper">
+                          Skills gained
+                        </p>
+                        <h3 className="mt-3 font-display text-2xl font-semibold">{item.company}</h3>
+                        <div className="mt-6 flex flex-wrap gap-2">
+                          {item.skills.map((skill) => (
+                            <span
+                              key={skill}
+                              className="rounded-[8px] border border-white/16 bg-white/8 px-3 py-2 text-sm font-medium text-white/85"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="mt-auto flex items-center justify-between border-t border-white/15 pt-5">
+                          <span className="text-sm font-semibold">Read more</span>
+                          <ArrowUpRight className="h-5 w-5 text-copper" />
+                        </div>
                       </div>
                     </div>
                   </Link>
@@ -465,7 +495,7 @@ export default function Home() {
                         {project.tag}
                       </div>
                     </div>
-                    <div className="flex flex-1 flex-col p-6">
+                    <div className="relative flex flex-1 flex-col overflow-hidden p-6">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-copper">
@@ -485,6 +515,28 @@ export default function Home() {
                       <div className="mt-auto flex items-center justify-between border-t border-white/14 pt-5">
                         <span className="text-sm font-semibold text-white">Read more</span>
                         <ArrowUpRight className="h-5 w-5 text-copper transition group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+                      <div className="absolute inset-0 flex translate-y-3 flex-col bg-[#202d28] p-6 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-copper">
+                          Skills gained
+                        </p>
+                        <h3 className="mt-3 font-display text-2xl font-semibold text-white">
+                          {project.title}
+                        </h3>
+                        <div className="mt-6 flex flex-wrap gap-2">
+                          {project.skills.map((skill) => (
+                            <span
+                              key={skill}
+                              className="rounded-[8px] border border-white/16 bg-white/8 px-3 py-2 text-sm font-medium text-white/85"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="mt-auto flex items-center justify-between border-t border-white/14 pt-5">
+                          <span className="text-sm font-semibold text-white">Read more</span>
+                          <ArrowUpRight className="h-5 w-5 text-copper" />
+                        </div>
                       </div>
                     </div>
                   </Link>
@@ -511,7 +563,8 @@ export default function Home() {
                 viewport={{ once: true, margin: "-80px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.55 }}
-                className="rounded-[8px] border border-line bg-white p-7 shadow-panel"
+                tabIndex={0}
+                className="group relative overflow-hidden rounded-[8px] border border-line bg-white p-7 shadow-panel outline-none transition hover:border-teal focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
@@ -530,6 +583,25 @@ export default function Home() {
                       {tag}
                     </span>
                   ))}
+                </div>
+                <div className="absolute inset-0 flex translate-y-3 flex-col bg-ink p-7 text-white opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-copper">
+                    Skills gained
+                  </p>
+                  <h3 className="mt-3 font-display text-2xl font-semibold">{item.title}</h3>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {item.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-[8px] border border-white/16 bg-white/8 px-3 py-2 text-sm font-medium text-white/85"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="mt-auto border-t border-white/15 pt-5 text-sm text-white/65">
+                    {item.date}
+                  </p>
                 </div>
               </motion.div>
             ))}

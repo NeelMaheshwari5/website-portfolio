@@ -2,52 +2,186 @@ import Link from "next/link";
 import {
   ArrowLeft,
   BookOpen,
-  Boxes,
   Code2,
-  Droplets,
-  Factory,
-  Flame,
-  GraduationCap,
-  Ruler,
-  Shapes
+  GraduationCap
 } from "lucide-react";
 
-const mechanicalCourses = [
+const technicalCourses = [
   {
-    title: "Computer-Aided Design",
-    icon: Ruler,
-    text:
-      "Parametric modeling, assemblies, engineering drawings, design communication, and CAD workflows used across mechanical projects."
+    code: "CS 441",
+    title: "Applied Machine Learning",
+    term: "Fall 2026",
+    status: "In progress",
+    description: "Machine-learning methods for practical prediction, classification, and data-driven decision making.",
+    skills: ["Model selection", "Feature engineering", "Evaluation", "Data workflows"]
   },
   {
-    title: "Thermodynamics",
-    icon: Flame,
-    text:
-      "Energy balances, thermodynamic properties, cycles, efficiency, and the analytical foundation used in thermal-system work."
+    code: "ME 360",
+    title: "Signal Processing",
+    term: "Fall 2026",
+    status: "In progress",
+    description: "Analysis and interpretation of time-varying engineering signals and measurement data.",
+    skills: ["Frequency analysis", "Filtering", "Sampling", "Measurement interpretation"]
   },
   {
-    title: "Design for Manufacturability",
-    icon: Factory,
-    text:
-      "Design decisions shaped by fabrication processes, assembly planning, material use, tolerances, cost, and production constraints."
+    code: "ME 320",
+    title: "Heat Transfer",
+    term: "Fall 2026",
+    status: "In progress",
+    description: "Conduction, convection, radiation, and thermal-system modeling for mechanical applications.",
+    skills: ["Thermal resistance", "Convection", "Radiation", "Heat-exchanger analysis"]
   },
   {
-    title: "Solid Mechanics",
-    icon: Shapes,
-    text:
-      "Stress, strain, deformation, loading, and structural behavior used to reason about mechanical components and assemblies."
+    code: "ME 400",
+    title: "Energy Conversion Systems",
+    term: "Spring 2026",
+    status: "Completed",
+    description: "Performance and design of systems that convert thermal, mechanical, and electrical energy.",
+    skills: ["Cycle analysis", "System efficiency", "Energy balances", "Performance tradeoffs"]
   },
   {
+    code: "ME 371",
+    title: "Mechanical Design II",
+    term: "Spring 2026",
+    status: "Completed",
+    description: "Team-based machine design using gear trains, component analysis, FEA, prototyping, and physical testing.",
+    skills: ["Machine design", "Gear analysis", "FEA", "Design validation"]
+  },
+  {
+    code: "ME 340",
+    title: "Dynamics of Mechanical Systems",
+    term: "Spring 2026",
+    status: "Completed",
+    description: "Dynamic modeling of mechanical systems using equations of motion and system-response methods.",
+    skills: ["Dynamic modeling", "Vibrations", "System response", "MATLAB"]
+  },
+  {
+    code: "CS 225",
+    title: "Data Structures",
+    term: "Spring 2026",
+    status: "Completed",
+    description: "Implementation and analysis of data structures and algorithms in C++.",
+    skills: ["C++", "Algorithms", "Trees and graphs", "Complexity analysis"]
+  },
+  {
+    code: "ME 370",
+    title: "Mechanical Design I",
+    term: "Fall 2025",
+    status: "Completed",
+    description: "Mechanism design and integration through a single-motor walking and dispensing robot.",
+    skills: ["Linkage design", "Kinematics", "Gear ratios", "Prototype testing"]
+  },
+  {
+    code: "ME 330",
     title: "Engineering Materials",
-    icon: Boxes,
-    text:
-      "Material structure, properties, selection, failure behavior, and the relationship between processing and performance."
+    term: "Fall 2025",
+    status: "Completed",
+    description: "Relationships among material structure, processing, properties, selection, and failure.",
+    skills: ["Material selection", "Failure modes", "Phase behavior", "Processing-property links"]
   },
   {
-    title: "Fluid Dynamics",
-    icon: Droplets,
-    text:
-      "Fluid statics, conservation principles, internal flow, pressure losses, and the behavior of mechanical flow systems."
+    code: "STAT 400",
+    title: "Statistics and Probability I",
+    term: "Fall 2025",
+    status: "Completed",
+    description: "Probability models, random variables, estimation, and statistical inference.",
+    skills: ["Probability", "Distributions", "Inference", "Data interpretation"]
+  },
+  {
+    code: "ME 310",
+    title: "Fundamentals of Fluid Dynamics",
+    term: "Spring 2025",
+    status: "Completed",
+    description: "Conservation laws, internal and external flow, dimensional analysis, and pressure losses.",
+    skills: ["Control volumes", "Pipe flow", "Dimensional analysis", "Fluid forces"]
+  },
+  {
+    code: "TAM 251",
+    title: "Introductory Solid Mechanics",
+    term: "Spring 2025",
+    status: "Completed",
+    description: "Stress, strain, deformation, torsion, bending, and structural loading.",
+    skills: ["Stress analysis", "Beam bending", "Torsion", "Deflection"]
+  },
+  {
+    code: "TAM 212",
+    title: "Introductory Dynamics",
+    term: "Spring 2025",
+    status: "Completed",
+    description: "Kinematics and kinetics of particles and rigid bodies.",
+    skills: ["Rigid-body motion", "Energy methods", "Momentum", "Kinematics"]
+  },
+  {
+    code: "ECE 206",
+    title: "Electrical and Electronic Circuits Laboratory",
+    term: "Spring 2025",
+    status: "Completed",
+    description: "Hands-on circuit measurement, instrumentation, assembly, and experimental validation.",
+    skills: ["Oscilloscopes", "Circuit assembly", "Measurement", "Lab documentation"]
+  },
+  {
+    code: "ECE 205",
+    title: "Electrical and Electronic Circuits",
+    term: "Fall 2024",
+    status: "Completed",
+    description: "DC and AC circuit analysis, transient response, operational amplifiers, and electronics fundamentals.",
+    skills: ["Circuit analysis", "Transient response", "Op-amps", "Electrical modeling"]
+  },
+  {
+    code: "ME 200",
+    title: "Thermodynamics",
+    term: "Fall 2024",
+    status: "Completed",
+    description: "Properties, energy balances, entropy, cycles, and thermodynamic system performance.",
+    skills: ["First and second laws", "Cycle analysis", "Property tables", "Efficiency"]
+  },
+  {
+    code: "TAM 210",
+    title: "Introduction to Statics",
+    term: "Fall 2024",
+    status: "Completed",
+    description: "Force systems, equilibrium, structures, centroids, and friction.",
+    skills: ["Free-body diagrams", "Equilibrium", "Trusses", "Friction"]
+  },
+  {
+    code: "CS 128",
+    title: "Introduction to Computer Science II",
+    term: "Fall 2024",
+    status: "Completed",
+    description: "Object-oriented programming, memory, data structures, and software design in C++.",
+    skills: ["C++", "Object-oriented design", "Memory management", "Debugging"]
+  },
+  {
+    code: "ME 270",
+    title: "Design for Manufacturability",
+    term: "Spring 2024",
+    status: "Completed",
+    description: "Product design shaped by manufacturing, assembly, sustainability, materials, and cost.",
+    skills: ["DFMA", "Process selection", "Circular design", "Design of experiments"]
+  },
+  {
+    code: "CS 124",
+    title: "Introduction to Computer Science I",
+    term: "Spring 2024",
+    status: "Completed",
+    description: "Programming fundamentals, algorithms, testing, and structured problem solving in Java.",
+    skills: ["Java", "Algorithms", "Testing", "Problem decomposition"]
+  },
+  {
+    code: "MATH 257",
+    title: "Linear Algebra with Computational Applications",
+    term: "Spring 2024",
+    status: "Completed",
+    description: "Matrix methods, vector spaces, eigenvalues, and computational linear algebra.",
+    skills: ["Matrix methods", "Eigenvalues", "Linear systems", "Computational modeling"]
+  },
+  {
+    code: "ME 170",
+    title: "Computer-Aided Design",
+    term: "Fall 2023",
+    status: "Completed",
+    description: "Parametric part modeling, assemblies, drawings, tolerancing, and product-design communication.",
+    skills: ["CAD", "Assemblies", "Engineering drawings", "Fits and tolerances"]
   }
 ];
 
@@ -132,29 +266,56 @@ export default function CourseworkPage() {
       <section className="py-20 md:py-28">
         <div className="section-shell">
           <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-            Mechanical Engineering
+            Technical Coursework
           </p>
           <h2 className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
-            Core subjects applied across design, analysis, and testing.
+            A chronological path through design, analysis, computing, and testing.
           </h2>
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {mechanicalCourses.map((course) => {
-              const Icon = course.icon;
-              return (
-                <article
-                  key={course.title}
-                  className="rounded-[8px] border border-line bg-white p-6 shadow-panel"
-                >
-                  <Icon className="h-6 w-6 text-teal" />
-                  <h3 className="mt-5 font-display text-xl font-semibold text-ink">
+            {technicalCourses.map((course) => (
+              <article
+                key={course.code}
+                tabIndex={0}
+                className="group relative h-56 overflow-hidden rounded-[8px] border border-line bg-white p-6 shadow-panel outline-none transition hover:-translate-y-1 hover:border-teal hover:shadow-soft focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
+              >
+                <div className="flex h-full flex-col">
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-copper">
+                      {course.code}
+                    </span>
+                    <span
+                      className={`rounded-[8px] px-2.5 py-1 text-xs font-semibold ${
+                        course.status === "Completed"
+                          ? "bg-field text-teal"
+                          : "bg-copper/12 text-copper"
+                      }`}
+                    >
+                      {course.status}
+                    </span>
+                  </div>
+                  <h3 className="mt-7 font-display text-2xl font-semibold leading-tight text-ink">
                     {course.title}
                   </h3>
-                  <p className="mt-4 text-base leading-8 text-graphite">
-                    {course.text}
+                  <p className="mt-auto text-sm font-medium text-steel">{course.term}</p>
+                </div>
+                <div className="absolute inset-0 flex translate-y-3 flex-col bg-ink p-6 text-white opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <p className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-copper">
+                    {course.code} / {course.term}
                   </p>
-                </article>
-              );
-            })}
+                  <p className="mt-4 text-sm leading-6 text-white/72">{course.description}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {course.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-[8px] border border-white/15 bg-white/8 px-2.5 py-1.5 text-xs font-medium text-white/85"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
