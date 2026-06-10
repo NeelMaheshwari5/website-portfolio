@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "Neel Maheshwari | Mechanical Engineering Portfolio",
     description:
       "CAD, prototyping, thermal systems, robotics, and product development.",
-    images: ["/images/engineering-hero.png"]
+    images: ["/images/proteinpal/prototype.png"]
   }
 };
 

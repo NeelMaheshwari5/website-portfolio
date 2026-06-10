@@ -212,17 +212,21 @@ function SectionTitle({
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="mb-10 max-w-3xl"
     >
-      <p className="mb-3 font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-        {eyebrow}
-      </p>
       <h2
-        className={`font-display text-3xl font-semibold leading-tight md:text-5xl ${
+        className={`font-display text-4xl font-semibold leading-[0.98] md:text-6xl ${
+          isDark ? "text-copper" : "text-teal"
+        }`}
+      >
+        {eyebrow}
+      </h2>
+      <p
+        className={`mt-4 max-w-2xl font-display text-xl font-semibold leading-snug md:text-2xl ${
           isDark ? "text-white" : "text-ink"
         }`}
       >
         {title}
-      </h2>
-      <p className={`mt-4 text-base leading-7 md:text-lg ${isDark ? "text-white/72" : "text-graphite"}`}>
+      </p>
+      <p className={`mt-3 max-w-2xl text-sm leading-6 md:text-base ${isDark ? "text-white/68" : "text-graphite"}`}>
         {text}
       </p>
     </motion.div>
@@ -267,7 +271,7 @@ function EngineeringSketch() {
 export default function Home() {
   return (
     <main className="noise overflow-hidden">
-      <nav className="fixed left-0 right-0 top-0 z-40 border-b border-white/35 bg-paper/78 backdrop-blur-xl">
+      <nav className="fixed left-0 right-0 top-0 z-40 border-b border-line bg-paper/92 backdrop-blur-xl">
         <div className="section-shell flex h-16 items-center">
           <a href="#top" className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-ink">
             NM
@@ -275,24 +279,26 @@ export default function Home() {
         </div>
       </nav>
 
-      <section id="top" className="relative min-h-screen overflow-hidden pt-16">
-        <Image
-          src="/images/engineering-hero.png"
-          alt="Mechanical engineering lab with CAD workstation, robotic arm prototype, and test instrumentation"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,247,242,0.96)_0%,rgba(247,247,242,0.86)_34%,rgba(247,247,242,0.16)_70%)]" />
+      <section id="top" className="relative min-h-screen overflow-hidden bg-field pt-16">
+        <div className="absolute inset-y-0 right-0 w-full opacity-[0.14] md:w-[54%] md:opacity-100">
+          <Image
+            src="/images/proteinpal/prototype.png"
+            alt="ProteinPal mechanical prototype showing its gears, augers, linkage legs, and protective housing"
+            fill
+            priority
+            sizes="(min-width: 768px) 54vw, 100vw"
+            className="object-contain object-right"
+          />
+        </div>
+        <div className="absolute inset-y-0 left-0 w-1 bg-copper" />
         <div className="section-shell relative z-10 flex min-h-[calc(100vh-4rem)] items-center pb-20 pt-16">
           <motion.div
             initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-3xl"
+            className="max-w-3xl md:max-w-[58%]"
           >
-            <div className="mb-7 inline-flex items-center gap-2 rounded-[8px] border border-line bg-white/68 px-3 py-2 text-sm font-medium text-graphite shadow-panel backdrop-blur">
+            <div className="mb-7 inline-flex items-center gap-2 rounded-[8px] border border-line bg-white px-3 py-2 text-sm font-medium text-graphite shadow-panel">
               <MapPin className="h-4 w-4 text-teal" />
               UIUC Mechanical Engineering, Computer Science Minor
             </div>
@@ -318,7 +324,7 @@ export default function Home() {
                 href="https://www.linkedin.com/in/neel-maheshwari-9b9402245"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white/78 px-4 py-3 text-sm font-semibold text-ink backdrop-blur transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
+                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white px-4 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
               >
                 <span className="inline-flex items-center gap-2">
                   <Linkedin className="h-4 w-4" />
@@ -328,7 +334,7 @@ export default function Home() {
               </a>
               <a
                 href="#projects"
-                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white/78 px-4 py-3 text-sm font-semibold text-ink backdrop-blur transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
+                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white px-4 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
               >
                 <span className="inline-flex items-center gap-2">
                   <FolderKanban className="h-4 w-4" />
@@ -338,7 +344,7 @@ export default function Home() {
               </a>
               <a
                 href="#research"
-                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white/78 px-4 py-3 text-sm font-semibold text-ink backdrop-blur transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
+                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white px-4 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
               >
                 <span className="inline-flex items-center gap-2">
                   <FlaskConical className="h-4 w-4" />
@@ -489,7 +495,7 @@ export default function Home() {
                               : "object-center"
                         }`}
                       />
-                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,32,28,0.02),rgba(23,32,28,0.5))]" />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,26,31,0.02),rgba(23,26,31,0.5))]" />
                       <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-[8px] bg-white/92 px-3 py-2 text-xs font-semibold text-ink shadow-panel">
                         <Icon className="h-4 w-4 text-teal" />
                         {project.tag}
@@ -516,7 +522,7 @@ export default function Home() {
                         <span className="text-sm font-semibold text-white">Read more</span>
                         <ArrowUpRight className="h-5 w-5 text-copper transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
-                      <div className="absolute inset-0 flex translate-y-3 flex-col bg-[#202d28] p-6 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                      <div className="absolute inset-0 flex translate-y-3 flex-col bg-graphite p-6 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
                         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-copper">
                           Skills gained
                         </p>
@@ -658,13 +664,13 @@ export default function Home() {
       <section className="py-24 md:py-32">
         <div className="section-shell grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
           <div>
-            <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+            <h2 className="font-display text-4xl font-semibold leading-[0.98] text-teal md:text-6xl">
               Education and Leadership
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-ink md:text-4xl">
-              UIUC Grainger College of Engineering
             </h2>
-            <p className="mt-4 leading-7 text-graphite">
+            <p className="mt-4 font-display text-xl font-semibold text-ink md:text-2xl">
+              UIUC Grainger College of Engineering
+            </p>
+            <p className="mt-3 text-sm leading-6 text-graphite md:text-base">
               Bachelor of Science in Mechanical Engineering, Computer Science Minor,
               James Scholar. Expected May 2027.
             </p>
@@ -694,11 +700,13 @@ export default function Home() {
       <footer id="contact" className="bg-ink py-16 text-white">
         <div className="section-shell flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-copper">
+            <h2 className="font-display text-4xl font-semibold leading-[0.98] text-copper md:text-5xl">
               Contact
+            </h2>
+            <p className="mt-4 font-display text-xl font-semibold">
+              Let&apos;s build the next prototype.
             </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold">Let's build the next prototype.</h2>
-            <p className="mt-4 max-w-2xl text-white/70">
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/70 md:text-base">
               Available for mechanical engineering internships, research collaborations,
               product development work, and robotics-focused project teams.
             </p>

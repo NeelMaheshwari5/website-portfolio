@@ -269,12 +269,12 @@ export default function CourseworkPage() {
 
       <section className="py-20 md:py-28">
         <div className="section-shell">
-          <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+          <h2 className="font-display text-4xl font-semibold leading-[0.98] text-teal md:text-6xl">
             Technical Coursework
-          </p>
-          <h2 className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
-            Completed courses grouped by engineering discipline.
           </h2>
+          <p className="mt-4 max-w-3xl font-display text-xl font-semibold leading-snug text-ink md:text-2xl">
+            Completed courses grouped by engineering discipline.
+          </p>
           <div className="mt-14 space-y-16">
             {courseCategories.map((category) => (
               <div key={category.title}>

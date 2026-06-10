@@ -57,7 +57,7 @@ export default function AutonomousChallengePage() {
           sizes="100vw"
           className="object-cover object-[78%_center]"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(23,32,28,0.96),rgba(23,32,28,0.78)_48%,rgba(23,32,28,0.25))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(23,26,31,0.96),rgba(23,26,31,0.78)_48%,rgba(23,26,31,0.25))]" />
         <div className="section-shell relative flex min-h-[520px] items-center py-16 text-white">
           <div className="max-w-3xl">
             <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-copper">
