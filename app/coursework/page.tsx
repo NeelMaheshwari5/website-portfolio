@@ -8,34 +8,10 @@ import {
 
 const technicalCourses = [
   {
-    code: "CS 441",
-    title: "Applied Machine Learning",
-    term: "Fall 2026",
-    status: "In progress",
-    description: "Machine-learning methods for practical prediction, classification, and data-driven decision making.",
-    skills: ["Model selection", "Feature engineering", "Evaluation", "Data workflows"]
-  },
-  {
-    code: "ME 360",
-    title: "Signal Processing",
-    term: "Fall 2026",
-    status: "In progress",
-    description: "Analysis and interpretation of time-varying engineering signals and measurement data.",
-    skills: ["Frequency analysis", "Filtering", "Sampling", "Measurement interpretation"]
-  },
-  {
-    code: "ME 320",
-    title: "Heat Transfer",
-    term: "Fall 2026",
-    status: "In progress",
-    description: "Conduction, convection, radiation, and thermal-system modeling for mechanical applications.",
-    skills: ["Thermal resistance", "Convection", "Radiation", "Heat-exchanger analysis"]
-  },
-  {
     code: "ME 400",
     title: "Energy Conversion Systems",
     term: "Spring 2026",
-    status: "Completed",
+    category: "Thermal and Fluid Systems",
     description: "Performance and design of systems that convert thermal, mechanical, and electrical energy.",
     skills: ["Cycle analysis", "System efficiency", "Energy balances", "Performance tradeoffs"]
   },
@@ -43,7 +19,7 @@ const technicalCourses = [
     code: "ME 371",
     title: "Mechanical Design II",
     term: "Spring 2026",
-    status: "Completed",
+    category: "Design and Manufacturing",
     description: "Team-based machine design using gear trains, component analysis, FEA, prototyping, and physical testing.",
     skills: ["Machine design", "Gear analysis", "FEA", "Design validation"]
   },
@@ -51,7 +27,7 @@ const technicalCourses = [
     code: "ME 340",
     title: "Dynamics of Mechanical Systems",
     term: "Spring 2026",
-    status: "Completed",
+    category: "Mechanics and Dynamics",
     description: "Dynamic modeling of mechanical systems using equations of motion and system-response methods.",
     skills: ["Dynamic modeling", "Vibrations", "System response", "MATLAB"]
   },
@@ -59,7 +35,7 @@ const technicalCourses = [
     code: "CS 225",
     title: "Data Structures",
     term: "Spring 2026",
-    status: "Completed",
+    category: "Computing and Data",
     description: "Implementation and analysis of data structures and algorithms in C++.",
     skills: ["C++", "Algorithms", "Trees and graphs", "Complexity analysis"]
   },
@@ -67,7 +43,7 @@ const technicalCourses = [
     code: "ME 370",
     title: "Mechanical Design I",
     term: "Fall 2025",
-    status: "Completed",
+    category: "Design and Manufacturing",
     description: "Mechanism design and integration through a single-motor walking and dispensing robot.",
     skills: ["Linkage design", "Kinematics", "Gear ratios", "Prototype testing"]
   },
@@ -75,7 +51,7 @@ const technicalCourses = [
     code: "ME 330",
     title: "Engineering Materials",
     term: "Fall 2025",
-    status: "Completed",
+    category: "Design and Manufacturing",
     description: "Relationships among material structure, processing, properties, selection, and failure.",
     skills: ["Material selection", "Failure modes", "Phase behavior", "Processing-property links"]
   },
@@ -83,7 +59,7 @@ const technicalCourses = [
     code: "STAT 400",
     title: "Statistics and Probability I",
     term: "Fall 2025",
-    status: "Completed",
+    category: "Computing and Data",
     description: "Probability models, random variables, estimation, and statistical inference.",
     skills: ["Probability", "Distributions", "Inference", "Data interpretation"]
   },
@@ -91,7 +67,7 @@ const technicalCourses = [
     code: "ME 310",
     title: "Fundamentals of Fluid Dynamics",
     term: "Spring 2025",
-    status: "Completed",
+    category: "Thermal and Fluid Systems",
     description: "Conservation laws, internal and external flow, dimensional analysis, and pressure losses.",
     skills: ["Control volumes", "Pipe flow", "Dimensional analysis", "Fluid forces"]
   },
@@ -99,7 +75,7 @@ const technicalCourses = [
     code: "TAM 251",
     title: "Introductory Solid Mechanics",
     term: "Spring 2025",
-    status: "Completed",
+    category: "Mechanics and Dynamics",
     description: "Stress, strain, deformation, torsion, bending, and structural loading.",
     skills: ["Stress analysis", "Beam bending", "Torsion", "Deflection"]
   },
@@ -107,7 +83,7 @@ const technicalCourses = [
     code: "TAM 212",
     title: "Introductory Dynamics",
     term: "Spring 2025",
-    status: "Completed",
+    category: "Mechanics and Dynamics",
     description: "Kinematics and kinetics of particles and rigid bodies.",
     skills: ["Rigid-body motion", "Energy methods", "Momentum", "Kinematics"]
   },
@@ -115,7 +91,7 @@ const technicalCourses = [
     code: "ECE 206",
     title: "Electrical and Electronic Circuits Laboratory",
     term: "Spring 2025",
-    status: "Completed",
+    category: "Electrical Systems and Testing",
     description: "Hands-on circuit measurement, instrumentation, assembly, and experimental validation.",
     skills: ["Oscilloscopes", "Circuit assembly", "Measurement", "Lab documentation"]
   },
@@ -123,7 +99,7 @@ const technicalCourses = [
     code: "ECE 205",
     title: "Electrical and Electronic Circuits",
     term: "Fall 2024",
-    status: "Completed",
+    category: "Electrical Systems and Testing",
     description: "DC and AC circuit analysis, transient response, operational amplifiers, and electronics fundamentals.",
     skills: ["Circuit analysis", "Transient response", "Op-amps", "Electrical modeling"]
   },
@@ -131,7 +107,7 @@ const technicalCourses = [
     code: "ME 200",
     title: "Thermodynamics",
     term: "Fall 2024",
-    status: "Completed",
+    category: "Thermal and Fluid Systems",
     description: "Properties, energy balances, entropy, cycles, and thermodynamic system performance.",
     skills: ["First and second laws", "Cycle analysis", "Property tables", "Efficiency"]
   },
@@ -139,7 +115,7 @@ const technicalCourses = [
     code: "TAM 210",
     title: "Introduction to Statics",
     term: "Fall 2024",
-    status: "Completed",
+    category: "Mechanics and Dynamics",
     description: "Force systems, equilibrium, structures, centroids, and friction.",
     skills: ["Free-body diagrams", "Equilibrium", "Trusses", "Friction"]
   },
@@ -147,7 +123,7 @@ const technicalCourses = [
     code: "CS 128",
     title: "Introduction to Computer Science II",
     term: "Fall 2024",
-    status: "Completed",
+    category: "Computing and Data",
     description: "Object-oriented programming, memory, data structures, and software design in C++.",
     skills: ["C++", "Object-oriented design", "Memory management", "Debugging"]
   },
@@ -155,7 +131,7 @@ const technicalCourses = [
     code: "ME 270",
     title: "Design for Manufacturability",
     term: "Spring 2024",
-    status: "Completed",
+    category: "Design and Manufacturing",
     description: "Product design shaped by manufacturing, assembly, sustainability, materials, and cost.",
     skills: ["DFMA", "Process selection", "Circular design", "Design of experiments"]
   },
@@ -163,7 +139,7 @@ const technicalCourses = [
     code: "CS 124",
     title: "Introduction to Computer Science I",
     term: "Spring 2024",
-    status: "Completed",
+    category: "Computing and Data",
     description: "Programming fundamentals, algorithms, testing, and structured problem solving in Java.",
     skills: ["Java", "Algorithms", "Testing", "Problem decomposition"]
   },
@@ -171,7 +147,7 @@ const technicalCourses = [
     code: "MATH 257",
     title: "Linear Algebra with Computational Applications",
     term: "Spring 2024",
-    status: "Completed",
+    category: "Computing and Data",
     description: "Matrix methods, vector spaces, eigenvalues, and computational linear algebra.",
     skills: ["Matrix methods", "Eigenvalues", "Linear systems", "Computational modeling"]
   },
@@ -179,9 +155,37 @@ const technicalCourses = [
     code: "ME 170",
     title: "Computer-Aided Design",
     term: "Fall 2023",
-    status: "Completed",
+    category: "Design and Manufacturing",
     description: "Parametric part modeling, assemblies, drawings, tolerancing, and product-design communication.",
     skills: ["CAD", "Assemblies", "Engineering drawings", "Fits and tolerances"]
+  }
+];
+
+const courseCategories = [
+  {
+    title: "Design and Manufacturing",
+    description:
+      "Product development from CAD and materials selection through mechanism design, prototyping, and validation."
+  },
+  {
+    title: "Mechanics and Dynamics",
+    description:
+      "Analytical foundations for understanding forces, motion, deformation, and mechanical-system response."
+  },
+  {
+    title: "Thermal and Fluid Systems",
+    description:
+      "Energy, thermodynamics, and fluid behavior applied to the analysis of mechanical systems."
+  },
+  {
+    title: "Computing and Data",
+    description:
+      "Programming, algorithms, mathematics, and statistics used to solve and interpret engineering problems."
+  },
+  {
+    title: "Electrical Systems and Testing",
+    description:
+      "Circuit analysis, instrumentation, and hands-on experimental measurement."
   }
 ];
 
@@ -269,52 +273,59 @@ export default function CourseworkPage() {
             Technical Coursework
           </p>
           <h2 className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
-            A chronological path through design, analysis, computing, and testing.
+            Completed courses grouped by engineering discipline.
           </h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {technicalCourses.map((course) => (
-              <article
-                key={course.code}
-                tabIndex={0}
-                className="group relative h-56 overflow-hidden rounded-[8px] border border-line bg-white p-6 shadow-panel outline-none transition hover:-translate-y-1 hover:border-teal hover:shadow-soft focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
-              >
-                <div className="flex h-full flex-col">
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-copper">
-                      {course.code}
-                    </span>
-                    <span
-                      className={`rounded-[8px] px-2.5 py-1 text-xs font-semibold ${
-                        course.status === "Completed"
-                          ? "bg-field text-teal"
-                          : "bg-copper/12 text-copper"
-                      }`}
-                    >
-                      {course.status}
-                    </span>
-                  </div>
-                  <h3 className="mt-7 font-display text-2xl font-semibold leading-tight text-ink">
-                    {course.title}
+          <div className="mt-14 space-y-16">
+            {courseCategories.map((category) => (
+              <div key={category.title}>
+                <div className="max-w-3xl border-l-2 border-copper pl-5">
+                  <h3 className="font-display text-2xl font-semibold text-ink">
+                    {category.title}
                   </h3>
-                  <p className="mt-auto text-sm font-medium text-steel">{course.term}</p>
+                  <p className="mt-2 leading-7 text-graphite">{category.description}</p>
                 </div>
-                <div className="absolute inset-0 flex translate-y-3 flex-col bg-ink p-6 text-white opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                  <p className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-copper">
-                    {course.code} / {course.term}
-                  </p>
-                  <p className="mt-4 text-sm leading-6 text-white/72">{course.description}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {course.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="rounded-[8px] border border-white/15 bg-white/8 px-2.5 py-1.5 text-xs font-medium text-white/85"
+                <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                  {technicalCourses
+                    .filter((course) => course.category === category.title)
+                    .map((course) => (
+                      <article
+                        key={course.code}
+                        tabIndex={0}
+                        className="group relative h-56 overflow-hidden rounded-[8px] border border-line bg-white p-6 shadow-panel outline-none transition hover:-translate-y-1 hover:border-teal hover:shadow-soft focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
                       >
-                        {skill}
-                      </span>
+                        <div className="flex h-full flex-col">
+                          <span className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-copper">
+                            {course.code}
+                          </span>
+                          <h4 className="mt-7 font-display text-2xl font-semibold leading-tight text-ink">
+                            {course.title}
+                          </h4>
+                          <p className="mt-auto text-sm font-medium text-steel">
+                            {course.term}
+                          </p>
+                        </div>
+                        <div className="absolute inset-0 flex translate-y-3 flex-col bg-ink p-6 text-white opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                          <p className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-copper">
+                            {course.code} / {course.term}
+                          </p>
+                          <p className="mt-4 text-sm leading-6 text-white/72">
+                            {course.description}
+                          </p>
+                          <div className="mt-5 flex flex-wrap gap-2">
+                            {course.skills.map((skill) => (
+                              <span
+                                key={skill}
+                                className="rounded-[8px] border border-white/15 bg-white/8 px-2.5 py-1.5 text-xs font-medium text-white/85"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </article>
                     ))}
                   </div>
-                </div>
-              </article>
+              </div>
             ))}
           </div>
         </div>
