@@ -24,8 +24,7 @@ import {
   Printer,
   Recycle,
   Ruler,
-  Trophy,
-  Wrench
+  Trophy
 } from "lucide-react";
 
 const experience = [
@@ -70,7 +69,7 @@ const projects = [
     skills: ["Fusion 360", "CAN bus", "3D printing", "Gearbox design", "System testing"]
   },
   {
-    title: "Autonomous Challenge",
+    title: "ASME Autonomous Challenge",
     tag: "ASME XRC",
     date: "Feb 2025 - Mar 2025",
     href: "/projects/autonomous-challenge",
@@ -81,15 +80,15 @@ const projects = [
     skills: ["Control logic", "Autonomous systems", "Constraint analysis", "Iterative testing"]
   },
   {
-    title: "Hemiplegic Wheelchair",
-    tag: "Mobility Product Design",
-    date: "2021 - 2022",
-    href: "/projects/hemiplegic-wheelchair",
-    icon: Wrench,
-    image: "/images/frido/wheelchair-cad-assembly.png",
+    title: "Printess 3D Bioprinter",
+    tag: "Bioprinting Project",
+    date: "In progress",
+    href: "/projects/printess-3d-bioprinter",
+    icon: Printer,
+    image: "/images/printess/bioprinter.png",
     summary:
-      "A foldable wheelchair concept that translates one-handed input into coordinated motion at both rear wheels.",
-    skills: ["Accessible design", "CAD assemblies", "Mechanism packaging", "Manufacturing feedback"]
+      "An in-progress bioprinting project focused on precise material deposition, motion control, and clean mechanical packaging.",
+    skills: ["Bioprinting", "Precision motion", "Mechanical packaging", "CAD", "Prototype planning"]
   },
   {
     title: "TriShift",
@@ -114,7 +113,7 @@ const projects = [
     skills: ["Linkage analysis", "Gear ratios", "Auger design", "CAD integration", "Prototype calibration"]
   },
   {
-    title: "Fruit Reamer",
+    title: "Fruit Juicer",
     tag: "ME 270 Design Challenge",
     date: "Spring 2024",
     href: "/projects/fruit-reamer",
@@ -142,11 +141,17 @@ const research = [
     title: "ACRC Summer Research Assistant",
     date: "May 2025 - Jul 2025",
     href: "/research/acrc",
-    image: "/images/acrc/electrical-connections-load-stand-1.png",
     overview:
       "Built compressor-test infrastructure for flammable refrigerant research, including electrical enclosure CAD, load-stand instrumentation, and isobutane pressure testing.",
-    tags: ["Compressor testing", "Instrumentation", "Thermal systems", "Load stands"],
     skills: ["Electrical enclosure CAD", "Instrumentation", "LabVIEW data capture", "Leak testing", "Pressure testing"]
+  },
+  {
+    title: "Ewoldt Research Group",
+    date: "In progress",
+    href: "/research/ewoldt",
+    overview:
+      "Ongoing research work connected to mechanical systems and experimental engineering. More details will be added as the project develops.",
+    skills: ["Research planning", "Experimental work", "Mechanical design", "Technical communication"]
   }
 ];
 
@@ -255,43 +260,8 @@ function SectionTitle({
   );
 }
 
-function EngineeringSketch() {
-  return (
-    <div className="relative h-full min-h-[260px] overflow-hidden rounded-[8px] border border-line bg-field">
-      <div className="absolute inset-0 opacity-70 [background-image:linear-gradient(rgba(96,114,127,0.16)_1px,transparent_1px),linear-gradient(90deg,rgba(96,114,127,0.16)_1px,transparent_1px)] [background-size:28px_28px]" />
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
-        className="absolute left-8 top-10 h-28 w-28 rounded-full border-[14px] border-steel/30"
-      >
-        <span className="absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-steel/60" />
-        {[0, 1, 2, 3, 4, 5].map((item) => (
-          <span
-            key={item}
-            className="absolute left-1/2 top-1/2 h-2 w-14 origin-left rounded-full bg-steel/50"
-            style={{ transform: `rotate(${item * 60}deg)` }}
-          />
-        ))}
-      </motion.div>
-      <motion.div
-        animate={{ x: [0, 18, 0], y: [0, -10, 0] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-12 right-8 h-32 w-40 border-l-[18px] border-t-[18px] border-copper/70"
-      >
-        <span className="absolute -right-6 -top-8 h-16 w-16 rounded-full border-[10px] border-copper/70" />
-        <span className="absolute bottom-0 left-7 h-4 w-28 rounded-full bg-ink/75" />
-      </motion.div>
-      <div className="absolute bottom-5 left-6 right-6 flex items-center justify-between border-t border-ink/20 pt-4 font-display text-xs uppercase tracking-[0.16em] text-steel">
-        <span>CAD</span>
-        <span>Prototype</span>
-        <span>Test</span>
-      </div>
-    </div>
-  );
-}
-
 export default function Home() {
-  const [isPastHero, setIsPastHero] = useState(false);
+  const [navOnDark, setNavOnDark] = useState(true);
   const { scrollYProgress } = useScroll();
   const scrollScaleX = useSpring(scrollYProgress, {
     stiffness: 150,
@@ -301,9 +271,10 @@ export default function Home() {
 
   useEffect(() => {
     const updateNav = () => {
-      const hero = document.getElementById("top");
-      const threshold = hero ? hero.offsetHeight - 80 : 560;
-      setIsPastHero(window.scrollY > threshold);
+      const sample = document.elementFromPoint(window.innerWidth / 2, 88);
+      const section = sample?.closest("section, footer");
+      const sectionId = section?.id;
+      setNavOnDark(sectionId === "top" || sectionId === "projects" || sectionId === "skills" || sectionId === "contact");
     };
 
     updateNav();
@@ -325,9 +296,9 @@ export default function Home() {
       />
       <nav
         className={`fixed left-0 right-0 top-0 z-40 border-b backdrop-blur-xl transition duration-300 ${
-          isPastHero
-            ? "border-line bg-paper/92 text-ink shadow-panel"
-            : "border-white/10 bg-ink/72 text-white"
+          navOnDark
+            ? "border-white/10 bg-ink/72 text-white"
+            : "border-line bg-paper/92 text-ink shadow-panel"
         }`}
       >
         <div className="section-shell flex h-16 items-center justify-between gap-5">
@@ -340,9 +311,9 @@ export default function Home() {
                 key={link.label}
                 href={link.href}
                 className={`rounded-[8px] px-3 py-2 text-sm font-semibold transition ${
-                  isPastHero
-                    ? "text-graphite hover:bg-field hover:text-teal"
-                    : "text-white/72 hover:bg-white/8 hover:text-white"
+                  navOnDark
+                    ? "text-white/72 hover:bg-white/8 hover:text-white"
+                    : "text-graphite hover:bg-field hover:text-teal"
                 }`}
               >
                 {link.label}
@@ -355,12 +326,17 @@ export default function Home() {
       <section
         id="top"
         className="relative min-h-screen overflow-hidden bg-ink pt-16 text-white"
+        onPointerMove={(event) => {
+          const rect = event.currentTarget.getBoundingClientRect();
+          event.currentTarget.style.setProperty("--cursor-x", `${((event.clientX - rect.left) / rect.width) * 100}%`);
+          event.currentTarget.style.setProperty("--cursor-y", `${((event.clientY - rect.top) / rect.height) * 100}%`);
+        }}
       >
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at 62% 42%, rgba(37, 99, 235, 0.18), transparent 34%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.1), transparent 26%)"
+              "radial-gradient(circle at var(--cursor-x, 62%) var(--cursor-y, 42%), rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0.08) 18%, transparent 38%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.09), transparent 26%)"
           }}
         />
         <div className="section-shell relative z-10 flex min-h-[calc(100vh-4rem)] items-center pb-20 pt-16">
@@ -507,7 +483,7 @@ export default function Home() {
       <section id="projects" className="bg-ink py-24 text-white md:py-32">
         <div className="section-shell">
           <SectionTitle
-            eyebrow="Selected Projects"
+            eyebrow="Project"
             title="Robotics, mobility, and autonomous systems shaped through iteration."
             text="These builds highlight practical prototyping, mechanical design, controls thinking, and the discipline to move from constraints to working demonstrations."
             tone="dark"
@@ -537,9 +513,9 @@ export default function Home() {
                         className={`object-cover transition duration-500 group-hover:scale-[1.025] ${
                           project.title === "NovoPrint"
                             ? "object-center"
-                            : project.title === "Autonomous Challenge"
-                              ? "object-[78%_center]"
-                              : "object-center"
+                              : project.title === "ASME Autonomous Challenge"
+                                ? "object-[78%_center]"
+                                : "object-center"
                         }`}
                       />
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,26,31,0.02),rgba(23,26,31,0.5))]" />
@@ -601,13 +577,13 @@ export default function Home() {
       </section>
 
       <section id="research" className="py-24 md:py-32">
-        <div className="section-shell grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
+        <div className="section-shell">
             <SectionTitle
               eyebrow="Research"
-              title="Thermal systems work grounded in instrumentation and test infrastructure."
-              text="Hands-on compressor testing work connected mechanical assembly, electrical housings, calibration, and safe experimentation with refrigerant systems."
+              title="Experimental engineering across thermal systems and emerging research."
+              text="My research work spans compressor-test infrastructure, instrumentation, electrical enclosure design, and new lab work that is still developing."
             />
+          <div className="grid gap-5 md:grid-cols-2">
             {research.map((item) => (
               <motion.div
                 key={item.title}
@@ -620,21 +596,8 @@ export default function Home() {
               >
                 <Link
                   href={item.href}
-                  className="flex h-full min-h-[500px] cursor-pointer flex-col overflow-hidden rounded-[8px] border border-line bg-white shadow-panel outline-none transition duration-300 hover:-translate-y-1 hover:border-teal hover:shadow-soft focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
+                  className="flex h-full min-h-[360px] cursor-pointer flex-col overflow-hidden rounded-[8px] border border-line bg-white shadow-panel outline-none transition duration-300 hover:-translate-y-1 hover:border-teal hover:shadow-soft focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
                 >
-                  <div className="image-shine relative aspect-[16/10] overflow-hidden border-b border-line bg-field">
-                    <Image
-                      src={item.image}
-                      alt="Electrical schematic for ACRC compressor load stand"
-                      fill
-                      sizes="(min-width: 1024px) 42vw, 100vw"
-                      className="object-cover object-[35%_28%] transition duration-500 group-hover:scale-[1.025]"
-                    />
-                    <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-[8px] bg-white/92 px-3 py-2 text-xs font-semibold text-ink shadow-panel">
-                      <FlaskConical className="h-4 w-4 text-teal" />
-                      ACRC Research
-                    </div>
-                  </div>
                   <div className="relative flex flex-1 flex-col overflow-hidden p-7">
                     <div className="flex items-start justify-between gap-4">
                       <div>
@@ -645,18 +608,9 @@ export default function Home() {
                           {item.title}
                         </h3>
                       </div>
+                      <FlaskConical className="mt-1 h-6 w-6 shrink-0 text-teal" />
                     </div>
                     <p className="mt-5 leading-7 text-graphite">{item.overview}</p>
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {item.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-[8px] border border-line bg-field px-3 py-2 text-sm font-medium text-graphite"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                     <div className="mt-auto flex items-center justify-between border-t border-line pt-5 text-teal">
                       <span className="text-sm font-semibold">Read more</span>
                       <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -686,14 +640,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <EngineeringSketch />
-          </motion.div>
         </div>
       </section>
 

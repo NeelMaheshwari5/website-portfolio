@@ -66,7 +66,7 @@ export default function FruitReamerPage() {
               ME 270 / Design Challenge
             </p>
             <h1 className="mt-4 font-display text-4xl font-semibold leading-tight text-ink md:text-6xl">
-              Fruit Reamer
+              Fruit Juicer
             </h1>
             <p className="mt-7 text-xl leading-9 text-graphite">
               A manual citrus juicer designed around the reusable crank mechanism of
@@ -77,7 +77,7 @@ export default function FruitReamerPage() {
           <div className="relative aspect-[4/5] max-h-[640px] overflow-hidden rounded-[8px] border border-line bg-field shadow-panel">
             <Image
               src="/images/fruit-reamer/assembly-cad.png"
-              alt="Fusion 360 assembly of the Fruit Reamer manual citrus juicer"
+              alt="Fusion 360 assembly of the Fruit Juicer manual citrus juicer"
               fill
               priority
               sizes="(min-width: 1024px) 58vw, 100vw"
@@ -262,7 +262,7 @@ export default function FruitReamerPage() {
               <div className="relative aspect-[16/6]">
                 <Image
                   src="/images/fruit-reamer/experiment-table.png"
-                  alt="Two-factor design of experiment calculations for the Fruit Reamer"
+                  alt="Two-factor design of experiment calculations for the Fruit Juicer"
                   fill
                   sizes="(min-width: 1024px) 60vw, 100vw"
                   className="object-contain"

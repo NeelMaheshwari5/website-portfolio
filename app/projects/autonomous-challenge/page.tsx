@@ -64,7 +64,7 @@ export default function AutonomousChallengePage() {
               ASME XRC / Spring 2025
             </p>
             <h1 className="mt-4 font-display text-4xl font-semibold leading-tight md:text-6xl">
-              Autonomous Challenge
+              ASME Autonomous Challenge
             </h1>
             <p className="mt-7 text-xl leading-9 text-white/76">
               A virtual autonomous vehicle designed and programmed in HyperSkill to
