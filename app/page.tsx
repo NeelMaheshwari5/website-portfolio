@@ -142,10 +142,12 @@ const research = [
   {
     title: "ACRC Summer Research Assistant",
     date: "May 2025 - Jul 2025",
-    text:
-      "Worked with graduate students under Dr. Craig Bradshaw to build compressor testing infrastructure, assemble electrical components and housings, and test a smaller isobutane load stand.",
+    href: "/research/acrc",
+    image: "/images/acrc/electrical-connections-load-stand-1.png",
+    overview:
+      "Built compressor-test infrastructure for flammable refrigerant research, including electrical enclosure CAD, load-stand instrumentation, and isobutane pressure testing.",
     tags: ["Compressor testing", "Instrumentation", "Thermal systems", "Load stands"],
-    skills: ["Test-stand assembly", "Instrumentation", "Compressor testing", "Electrical housings", "Lab troubleshooting"]
+    skills: ["Electrical enclosure CAD", "Instrumentation", "LabVIEW data capture", "Leak testing", "Pressure testing"]
   }
 ];
 
@@ -562,46 +564,74 @@ export default function Home() {
                 viewport={{ once: true, margin: "-80px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.55 }}
-                tabIndex={0}
-                className="group relative overflow-hidden rounded-[8px] border border-line bg-white p-7 shadow-panel outline-none transition hover:border-teal focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
+                className="group"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="font-display text-2xl font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-2 text-sm font-medium text-steel">{item.date}</p>
+                <Link
+                  href={item.href}
+                  className="flex h-full min-h-[500px] cursor-pointer flex-col overflow-hidden rounded-[8px] border border-line bg-white shadow-panel outline-none transition duration-300 hover:-translate-y-1 hover:border-teal hover:shadow-soft focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
+                >
+                  <div className="image-shine relative aspect-[16/10] overflow-hidden border-b border-line bg-field">
+                    <Image
+                      src={item.image}
+                      alt="Electrical schematic for ACRC compressor load stand"
+                      fill
+                      sizes="(min-width: 1024px) 42vw, 100vw"
+                      className="object-cover object-[35%_28%] transition duration-500 group-hover:scale-[1.025]"
+                    />
+                    <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-[8px] bg-white/92 px-3 py-2 text-xs font-semibold text-ink shadow-panel">
+                      <FlaskConical className="h-4 w-4 text-teal" />
+                      ACRC Research
+                    </div>
                   </div>
-                  <Award className="h-6 w-6 text-copper" />
-                </div>
-                <p className="mt-5 leading-7 text-graphite">{item.text}</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {item.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-[8px] border border-line bg-field px-3 py-2 text-sm font-medium text-graphite"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="absolute inset-0 flex translate-y-3 flex-col bg-ink p-7 text-white opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-copper">
-                    Skills gained
-                  </p>
-                  <h3 className="mt-3 font-display text-2xl font-semibold">{item.title}</h3>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {item.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="rounded-[8px] border border-white/16 bg-white/8 px-3 py-2 text-sm font-medium text-white/85"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                  <div className="relative flex flex-1 flex-col overflow-hidden p-7">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-copper">
+                          {item.date}
+                        </p>
+                        <h3 className="mt-2 font-display text-2xl font-semibold text-ink">
+                          {item.title}
+                        </h3>
+                      </div>
+                      <Award className="h-6 w-6 shrink-0 text-copper" />
+                    </div>
+                    <p className="mt-5 leading-7 text-graphite">{item.overview}</p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-[8px] border border-line bg-field px-3 py-2 text-sm font-medium text-graphite"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-auto flex items-center justify-between rounded-[8px] bg-ink px-4 py-3 text-white transition group-hover:bg-teal">
+                      <span className="text-sm font-semibold">Read more</span>
+                      <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </div>
+                    <div className="absolute inset-0 flex translate-y-3 flex-col bg-ink p-7 text-white opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-copper">
+                        Skills gained
+                      </p>
+                      <h3 className="mt-3 font-display text-2xl font-semibold">{item.title}</h3>
+                      <div className="mt-6 flex flex-wrap gap-2">
+                        {item.skills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="rounded-[8px] border border-white/16 bg-white/8 px-3 py-2 text-sm font-medium text-white/85"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="mt-auto flex items-center justify-between border-t border-white/15 pt-5">
+                        <span className="text-sm font-semibold">Read more</span>
+                        <ArrowUpRight className="h-5 w-5 text-copper" />
+                      </div>
+                    </div>
                   </div>
-                  <p className="mt-auto border-t border-white/15 pt-5 text-sm text-white/65">
-                    {item.date}
-                  </p>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
