@@ -273,7 +273,7 @@ function EngineeringSketch() {
 export default function Home() {
   return (
     <main className="noise overflow-hidden">
-      <nav className="fixed left-0 right-0 top-0 z-40 border-b border-line bg-paper/92 backdrop-blur-xl">
+      <nav className="fixed left-0 right-0 top-0 z-40 border-b border-line bg-ink text-white backdrop-blur-xl [&_a]:text-white">
         <div className="section-shell flex h-16 items-center">
           <a href="#top" className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-ink">
             NM
@@ -307,7 +307,7 @@ export default function Home() {
             <div className="mt-9 grid max-w-3xl grid-cols-2 gap-3 sm:flex sm:flex-wrap">
               <a
                 href="#work"
-                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] bg-teal px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-ink sm:px-5"
+                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] bg-copper px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-ink sm:px-5"
               >
                 <span className="inline-flex items-center gap-2">
                   <BriefcaseBusiness className="h-4 w-4" />
@@ -402,7 +402,7 @@ export default function Home() {
                           className="object-contain object-left"
                         />
                       </div>
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] border border-line bg-white text-teal transition group-hover:border-teal group-hover:bg-teal group-hover:text-white">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] border border-line bg-white text-teal transition group-hover:border-teal group-hover:bg-copper group-hover:text-white">
                         <Icon className="h-5 w-5" />
                       </div>
                     </div>
@@ -419,7 +419,7 @@ export default function Home() {
                         </p>
                       </div>
                       <p className="mt-6 text-base leading-7 text-graphite">{item.overview}</p>
-                      <div className="mt-auto flex items-center justify-between rounded-[8px] bg-ink px-4 py-3 text-white transition group-hover:bg-teal">
+                      <div className="mt-auto flex items-center justify-between rounded-[8px] bg-ink px-4 py-3 text-white transition group-hover:bg-copper">
                         <span className="text-sm font-semibold">Read more</span>
                         <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
@@ -606,7 +606,7 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
-                    <div className="mt-auto flex items-center justify-between rounded-[8px] bg-ink px-4 py-3 text-white transition group-hover:bg-teal">
+                    <div className="mt-auto flex items-center justify-between rounded-[8px] bg-ink px-4 py-3 text-white transition group-hover:bg-copper">
                       <span className="text-sm font-semibold">Read more</span>
                       <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </div>

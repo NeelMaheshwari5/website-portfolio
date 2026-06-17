@@ -33,7 +33,7 @@ const designPriorities = [
 export default function HemiplegicWheelchairPage() {
   return (
     <main className="noise min-h-screen bg-paper">
-      <nav className="border-b border-line bg-paper/90 backdrop-blur-xl">
+      <nav className="border-b border-line bg-ink text-white backdrop-blur-xl [&_a]:text-white [&_svg]:text-white">
         <div className="section-shell flex h-16 items-center justify-between">
           <Link
             href="/#projects"
@@ -146,7 +146,7 @@ export default function HemiplegicWheelchairPage() {
         <div className="section-shell">
           <Link
             href="/work/arcatron"
-            className="group flex max-w-3xl items-center justify-between gap-6 rounded-[8px] border border-line bg-ink p-6 text-white transition hover:-translate-y-1 hover:border-teal hover:bg-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
+            className="group flex max-w-3xl items-center justify-between gap-6 rounded-[8px] border border-line bg-ink p-6 text-white transition hover:-translate-y-1 hover:border-teal hover:bg-copper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
           >
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-copper">

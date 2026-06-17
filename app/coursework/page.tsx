@@ -227,7 +227,7 @@ const academicRoles = [
 export default function CourseworkPage() {
   return (
     <main className="noise min-h-screen bg-paper">
-      <nav className="border-b border-line bg-paper/90 backdrop-blur-xl">
+      <nav className="border-b border-line bg-ink text-white backdrop-blur-xl [&_a]:text-white [&_svg]:text-white">
         <div className="section-shell flex h-16 items-center justify-between">
           <Link
             href="/"
