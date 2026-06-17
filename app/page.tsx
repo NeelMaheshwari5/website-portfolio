@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import {
   ArrowUpRight,
   Award,
@@ -92,28 +92,6 @@ const projects = [
     skills: ["Accessible design", "CAD assemblies", "Mechanism packaging", "Manufacturing feedback"]
   },
   {
-    title: "SuperCaddy",
-    tag: "ME 170 Product Design",
-    date: "Fall 2023",
-    href: "/projects/supercaddy",
-    icon: Ruler,
-    image: "/images/supercaddy/assembly.jpg",
-    summary:
-      "A foldable, wall-mounted shower caddy with refillable dispensers, designed for dorm living and users with low hand dexterity.",
-    skills: ["User research", "Concept selection", "GD&T", "Tolerance analysis", "Design for manufacturing"]
-  },
-  {
-    title: "Fruit Reamer",
-    tag: "ME 270 Design Challenge",
-    date: "Spring 2024",
-    href: "/projects/fruit-reamer",
-    icon: Recycle,
-    image: "/images/fruit-reamer/assembly-cad.png",
-    summary:
-      "A manual citrus juicer that repurposes a coffee grinder's crank mechanism through design for disassembly and circular material use.",
-    skills: ["Circular design", "Design for disassembly", "Material selection", "CAD", "Design of experiments"]
-  },
-  {
     title: "TriShift",
     tag: "ME 371 Mechanical Design",
     date: "Spring 2026",
@@ -134,6 +112,28 @@ const projects = [
     summary:
       "A single-motor walking robot that uses Klann-linkage legs and twin augers to dispense protein bars at fixed travel intervals.",
     skills: ["Linkage analysis", "Gear ratios", "Auger design", "CAD integration", "Prototype calibration"]
+  },
+  {
+    title: "Fruit Reamer",
+    tag: "ME 270 Design Challenge",
+    date: "Spring 2024",
+    href: "/projects/fruit-reamer",
+    icon: Recycle,
+    image: "/images/fruit-reamer/assembly-cad.png",
+    summary:
+      "A manual citrus juicer that repurposes a coffee grinder's crank mechanism through design for disassembly and circular material use.",
+    skills: ["Circular design", "Design for disassembly", "Material selection", "CAD", "Design of experiments"]
+  },
+  {
+    title: "SuperCaddy",
+    tag: "ME 170 Product Design",
+    date: "Fall 2023",
+    href: "/projects/supercaddy",
+    icon: Ruler,
+    image: "/images/supercaddy/assembly.jpg",
+    summary:
+      "A foldable, wall-mounted shower caddy with refillable dispensers, designed for dorm living and users with low hand dexterity.",
+    skills: ["User research", "Concept selection", "GD&T", "Tolerance analysis", "Design for manufacturing"]
   }
 ];
 
@@ -292,7 +292,12 @@ function EngineeringSketch() {
 
 export default function Home() {
   const [isPastHero, setIsPastHero] = useState(false);
-  const [cursor, setCursor] = useState({ x: 66, y: 42 });
+  const { scrollYProgress } = useScroll();
+  const scrollScaleX = useSpring(scrollYProgress, {
+    stiffness: 150,
+    damping: 28,
+    mass: 0.2
+  });
 
   useEffect(() => {
     const updateNav = () => {
@@ -313,6 +318,11 @@ export default function Home() {
 
   return (
     <main className="noise overflow-hidden">
+      <motion.div
+        className="fixed left-0 top-0 z-50 h-1 w-full origin-left bg-teal"
+        style={{ scaleX: scrollScaleX }}
+        aria-hidden="true"
+      />
       <nav
         className={`fixed left-0 right-0 top-0 z-40 border-b backdrop-blur-xl transition duration-300 ${
           isPastHero
@@ -345,75 +355,14 @@ export default function Home() {
       <section
         id="top"
         className="relative min-h-screen overflow-hidden bg-ink pt-16 text-white"
-        onPointerMove={(event) => {
-          const rect = event.currentTarget.getBoundingClientRect();
-          setCursor({
-            x: ((event.clientX - rect.left) / rect.width) * 100,
-            y: ((event.clientY - rect.top) / rect.height) * 100
-          });
-        }}
       >
         <div
-          className="absolute inset-0 transition-[background] duration-300"
+          className="absolute inset-0"
           style={{
-            background: `radial-gradient(circle at ${cursor.x}% ${cursor.y}%, rgba(37, 99, 235, 0.34), rgba(37, 99, 235, 0.12) 18%, transparent 38%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.12), transparent 30%)`
+            background:
+              "radial-gradient(circle at 62% 42%, rgba(37, 99, 235, 0.18), transparent 34%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.1), transparent 26%)"
           }}
         />
-        <motion.div
-          className="pointer-events-none absolute right-[3%] top-[52%] hidden h-[430px] w-[430px] -translate-y-1/2 lg:block"
-          animate={{ x: (cursor.x - 50) * 0.13, y: (cursor.y - 50) * 0.1 }}
-          transition={{ type: "spring", stiffness: 42, damping: 20 }}
-          aria-hidden="true"
-        >
-          <div className="absolute inset-0 rounded-full bg-teal/8 blur-3xl" />
-          <motion.div
-            className="absolute inset-8 rounded-full border border-white/12"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 42, repeat: Infinity, ease: "linear" }}
-          >
-            <span className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-teal shadow-[0_0_24px_rgba(37,99,235,0.9)]" />
-            <span className="absolute bottom-12 right-8 h-2 w-2 rounded-full bg-white/70" />
-          </motion.div>
-          <motion.div
-            className="absolute inset-20 rounded-full border border-teal/35"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 58, repeat: Infinity, ease: "linear" }}
-          >
-            <span className="absolute left-4 top-8 h-2.5 w-2.5 rounded-full bg-teal shadow-[0_0_28px_rgba(37,99,235,0.8)]" />
-            <span className="absolute bottom-6 left-1/2 h-1.5 w-1.5 rounded-full bg-white/60" />
-          </motion.div>
-          <div className="absolute left-1/2 top-6 h-[calc(100%-3rem)] w-px -translate-x-1/2 bg-white/10" />
-          <div className="absolute left-6 top-1/2 h-px w-[calc(100%-3rem)] -translate-y-1/2 bg-white/10" />
-          {Array.from({ length: 10 }).map((_, index) => (
-            <span
-              key={index}
-              className="absolute left-1/2 top-1/2 h-px w-16 origin-left bg-gradient-to-r from-teal/55 to-transparent"
-              style={{
-                transform: `rotate(${index * 36}deg) translateX(112px)`
-              }}
-            />
-          ))}
-          <motion.div
-            className="absolute left-[34%] top-[33%] h-28 w-28 rounded-full border border-white/15 bg-white/[0.035] backdrop-blur"
-            animate={{ scale: [1, 1.06, 1], opacity: [0.75, 1, 0.75] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="absolute inset-7 rounded-full border border-teal/50" />
-            <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal shadow-[0_0_26px_rgba(37,99,235,0.9)]" />
-          </motion.div>
-          <div className="absolute bottom-10 left-8 rounded-[8px] border border-white/12 bg-white/[0.075] px-4 py-3 shadow-panel backdrop-blur">
-            <p className="font-display text-[0.66rem] uppercase tracking-[0.2em] text-white/50">
-              Workflow
-            </p>
-            <p className="mt-1 text-sm font-semibold text-white">CAD / Test / Iterate</p>
-          </div>
-          <div className="absolute right-8 top-12 rounded-[8px] border border-teal/30 bg-teal/10 px-4 py-3 shadow-panel backdrop-blur">
-            <p className="font-display text-[0.66rem] uppercase tracking-[0.2em] text-white/50">
-              Focus
-            </p>
-            <p className="mt-1 text-sm font-semibold text-white">Mechanical systems</p>
-          </div>
-        </motion.div>
         <div className="section-shell relative z-10 flex min-h-[calc(100vh-4rem)] items-center pb-20 pt-16">
           <motion.div
             className="max-w-4xl"
@@ -571,7 +520,7 @@ export default function Home() {
                   key={project.title}
                   initial={{ opacity: 0, y: 36 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
+                  viewport={{ once: true, margin: "0px 0px 180px 0px" }}
                   transition={{ duration: 0.65, delay: index * 0.08 }}
                   className="group"
                 >
