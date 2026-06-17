@@ -353,7 +353,6 @@ export default function Home() {
           });
         }}
       >
-        <div className="absolute inset-y-0 left-0 w-1 bg-teal" />
         <div
           className="absolute inset-0 transition-[background] duration-300"
           style={{
@@ -361,15 +360,60 @@ export default function Home() {
           }}
         />
         <motion.div
-          className="absolute right-[8%] top-[18%] hidden h-48 w-48 border border-white/10 lg:block"
-          animate={{ x: (cursor.x - 50) * 0.16, y: (cursor.y - 50) * 0.12 }}
-          transition={{ type: "spring", stiffness: 45, damping: 18 }}
-        />
-        <motion.div
-          className="absolute right-[16%] top-[31%] hidden h-48 w-48 border border-teal/45 lg:block"
-          animate={{ x: (cursor.x - 50) * -0.1, y: (cursor.y - 50) * -0.08 }}
-          transition={{ type: "spring", stiffness: 45, damping: 18 }}
-        />
+          className="pointer-events-none absolute right-[3%] top-[52%] hidden h-[430px] w-[430px] -translate-y-1/2 lg:block"
+          animate={{ x: (cursor.x - 50) * 0.13, y: (cursor.y - 50) * 0.1 }}
+          transition={{ type: "spring", stiffness: 42, damping: 20 }}
+          aria-hidden="true"
+        >
+          <div className="absolute inset-0 rounded-full bg-teal/8 blur-3xl" />
+          <motion.div
+            className="absolute inset-8 rounded-full border border-white/12"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 42, repeat: Infinity, ease: "linear" }}
+          >
+            <span className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-teal shadow-[0_0_24px_rgba(37,99,235,0.9)]" />
+            <span className="absolute bottom-12 right-8 h-2 w-2 rounded-full bg-white/70" />
+          </motion.div>
+          <motion.div
+            className="absolute inset-20 rounded-full border border-teal/35"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 58, repeat: Infinity, ease: "linear" }}
+          >
+            <span className="absolute left-4 top-8 h-2.5 w-2.5 rounded-full bg-teal shadow-[0_0_28px_rgba(37,99,235,0.8)]" />
+            <span className="absolute bottom-6 left-1/2 h-1.5 w-1.5 rounded-full bg-white/60" />
+          </motion.div>
+          <div className="absolute left-1/2 top-6 h-[calc(100%-3rem)] w-px -translate-x-1/2 bg-white/10" />
+          <div className="absolute left-6 top-1/2 h-px w-[calc(100%-3rem)] -translate-y-1/2 bg-white/10" />
+          {Array.from({ length: 10 }).map((_, index) => (
+            <span
+              key={index}
+              className="absolute left-1/2 top-1/2 h-px w-16 origin-left bg-gradient-to-r from-teal/55 to-transparent"
+              style={{
+                transform: `rotate(${index * 36}deg) translateX(112px)`
+              }}
+            />
+          ))}
+          <motion.div
+            className="absolute left-[34%] top-[33%] h-28 w-28 rounded-full border border-white/15 bg-white/[0.035] backdrop-blur"
+            animate={{ scale: [1, 1.06, 1], opacity: [0.75, 1, 0.75] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="absolute inset-7 rounded-full border border-teal/50" />
+            <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal shadow-[0_0_26px_rgba(37,99,235,0.9)]" />
+          </motion.div>
+          <div className="absolute bottom-10 left-8 rounded-[8px] border border-white/12 bg-white/[0.075] px-4 py-3 shadow-panel backdrop-blur">
+            <p className="font-display text-[0.66rem] uppercase tracking-[0.2em] text-white/50">
+              Workflow
+            </p>
+            <p className="mt-1 text-sm font-semibold text-white">CAD / Test / Iterate</p>
+          </div>
+          <div className="absolute right-8 top-12 rounded-[8px] border border-teal/30 bg-teal/10 px-4 py-3 shadow-panel backdrop-blur">
+            <p className="font-display text-[0.66rem] uppercase tracking-[0.2em] text-white/50">
+              Focus
+            </p>
+            <p className="mt-1 text-sm font-semibold text-white">Mechanical systems</p>
+          </div>
+        </motion.div>
         <div className="section-shell relative z-10 flex min-h-[calc(100vh-4rem)] items-center pb-20 pt-16">
           <motion.div
             className="max-w-4xl"
