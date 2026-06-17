@@ -8,18 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0B1F33",
-        graphite: "#243447",
-        line: "#D8DDE4",
-        paper: "#FFFFFF",
-        field: "#E5E7EB",
-        teal: "#3A506B",
-        copper: "#F97316",
-        steel: "#6B7280"
+        ink: "#111827",
+        graphite: "#1F2933",
+        line: "#CBD5E1",
+        paper: "#F8FAFC",
+        field: "#E2E8F0",
+        teal: "#2563EB",
+        copper: "#2563EB",
+        steel: "#64748B"
       },
       boxShadow: {
-        soft: "0 24px 80px rgba(11, 31, 51, 0.14)",
-        panel: "0 16px 45px rgba(11, 31, 51, 0.09)"
+        soft: "0 24px 80px rgba(17, 24, 39, 0.14)",
+        panel: "0 16px 45px rgba(17, 24, 39, 0.09)"
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],

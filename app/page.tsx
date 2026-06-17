@@ -187,6 +187,27 @@ const leadership = [
   "ECE 205 and ME 200 Grader"
 ];
 
+const navLinks = [
+  { label: "Work", href: "#work" },
+  { label: "Projects", href: "#projects" },
+  { label: "Research", href: "#research" },
+  { label: "Coursework", href: "/coursework" },
+  { label: "Contact", href: "#contact" }
+];
+
+const heroActions = [
+  { label: "Internships", href: "#work", icon: BriefcaseBusiness },
+  { label: "Projects", href: "#projects", icon: FolderKanban },
+  { label: "Research", href: "#research", icon: FlaskConical },
+  { label: "Coursework", href: "/coursework", icon: BookOpen, isLink: true },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/neel-maheshwari-9b9402245",
+    icon: Linkedin,
+    external: true
+  }
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 }
@@ -273,19 +294,30 @@ function EngineeringSketch() {
 export default function Home() {
   return (
     <main className="noise overflow-hidden">
-      <nav className="fixed left-0 right-0 top-0 z-40 border-b border-line bg-ink text-white backdrop-blur-xl [&_a]:text-white">
-        <div className="section-shell flex h-16 items-center">
-          <a href="#top" className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-ink">
+      <nav className="fixed left-0 right-0 top-0 z-40 border-b border-white/10 bg-ink/92 text-white backdrop-blur-xl">
+        <div className="section-shell flex h-16 items-center justify-between gap-5">
+          <a href="#top" className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white">
             NM
           </a>
+          <div className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="rounded-[8px] px-3 py-2 text-sm font-semibold text-white/72 transition hover:bg-white/8 hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       </nav>
 
-      <section id="top" className="relative min-h-screen overflow-hidden bg-field pt-16">
-        <div className="absolute inset-y-0 left-0 w-1 bg-copper" />
-        <div className="absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(103,117,130,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(103,117,130,0.1)_1px,transparent_1px)] [background-size:32px_32px]" />
-        <div className="absolute right-[8%] top-[18%] hidden h-48 w-48 border border-steel/20 lg:block" />
-        <div className="absolute right-[16%] top-[31%] hidden h-48 w-48 border border-copper/35 lg:block" />
+      <section id="top" className="relative min-h-screen overflow-hidden bg-ink pt-16 text-white">
+        <div className="absolute inset-y-0 left-0 w-1 bg-teal" />
+        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(203,213,225,0.16)_1px,transparent_1px),linear-gradient(90deg,rgba(203,213,225,0.16)_1px,transparent_1px)] [background-size:32px_32px]" />
+        <div className="absolute right-[8%] top-[18%] hidden h-48 w-48 border border-white/10 lg:block" />
+        <div className="absolute right-[16%] top-[31%] hidden h-48 w-48 border border-teal/45 lg:block" />
         <div className="section-shell relative z-10 flex min-h-[calc(100vh-4rem)] items-center pb-20 pt-16">
           <motion.div
             initial={{ opacity: 0, y: 34 }}
@@ -293,70 +325,52 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-4xl"
           >
-            <div className="mb-7 inline-flex items-center gap-2 rounded-[8px] border border-line bg-white px-3 py-2 text-sm font-medium text-graphite shadow-panel">
+            <div className="mb-7 inline-flex items-center gap-2 rounded-[8px] border border-white/10 bg-white/8 px-3 py-2 text-sm font-medium text-white/74 backdrop-blur">
               <MapPin className="h-4 w-4 text-teal" />
               UIUC Mechanical Engineering, Computer Science Minor
             </div>
-            <h1 className="font-display text-5xl font-semibold leading-[0.98] text-ink md:text-7xl">
+            <h1 className="font-display text-5xl font-semibold leading-[0.98] text-white md:text-7xl">
               Neel Maheshwari
             </h1>
-            <p className="mt-6 max-w-2xl text-xl leading-8 text-graphite md:text-2xl">
+            <p className="mt-6 max-w-2xl text-xl leading-8 text-white/72 md:text-2xl">
               Mechanical engineer building practical systems across CAD, thermal testing,
               robotic 3D printing, and product development.
             </p>
-            <div className="mt-9 grid max-w-3xl grid-cols-2 gap-3 sm:flex sm:flex-wrap">
-              <a
-                href="#work"
-                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] bg-copper px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-ink sm:px-5"
-              >
-                <span className="inline-flex items-center gap-2">
-                  <BriefcaseBusiness className="h-4 w-4" />
-                  Internships
-                </span>
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/neel-maheshwari-9b9402245"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white px-4 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
-              >
-                <span className="inline-flex items-center gap-2">
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
-                </span>
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#projects"
-                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white px-4 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
-              >
-                <span className="inline-flex items-center gap-2">
-                  <FolderKanban className="h-4 w-4" />
-                  Projects
-                </span>
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#research"
-                className="inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] border border-ink/15 bg-white px-4 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:px-5"
-              >
-                <span className="inline-flex items-center gap-2">
-                  <FlaskConical className="h-4 w-4" />
-                  Research
-                </span>
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <Link
-                href="/coursework"
-                className="col-span-2 inline-flex min-h-12 items-center justify-between gap-3 rounded-[8px] bg-ink px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-copper sm:col-span-1 sm:px-5"
-              >
-                <span className="inline-flex items-center gap-2">
-                  <BookOpen className="h-4 w-4" />
-                  Coursework
-                </span>
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
+            <div className="mt-9 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              {heroActions.map((action) => {
+                const Icon = action.icon;
+                const className =
+                  "group inline-flex min-h-[3.25rem] items-center justify-between gap-3 rounded-[8px] border border-white/10 bg-white/[0.075] px-4 py-3 text-sm font-semibold text-white shadow-panel backdrop-blur transition hover:-translate-y-0.5 hover:border-teal hover:bg-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 focus-visible:ring-offset-ink";
+                const content = (
+                  <>
+                    <span className="inline-flex items-center gap-2">
+                      <Icon className="h-4 w-4" />
+                      {action.label}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </>
+                );
+
+                if (action.isLink) {
+                  return (
+                    <Link key={action.label} href={action.href} className={className}>
+                      {content}
+                    </Link>
+                  );
+                }
+
+                return (
+                  <a
+                    key={action.label}
+                    href={action.href}
+                    target={action.external ? "_blank" : undefined}
+                    rel={action.external ? "noreferrer" : undefined}
+                    className={className}
+                  >
+                    {content}
+                  </a>
+                );
+              })}
             </div>
           </motion.div>
         </div>
@@ -419,7 +433,7 @@ export default function Home() {
                         </p>
                       </div>
                       <p className="mt-6 text-base leading-7 text-graphite">{item.overview}</p>
-                      <div className="mt-auto flex items-center justify-between rounded-[8px] bg-ink px-4 py-3 text-white transition group-hover:bg-copper">
+                      <div className="mt-auto flex items-center justify-between rounded-[8px] border border-line bg-graphite px-4 py-3 text-white transition group-hover:border-teal group-hover:bg-teal">
                         <span className="text-sm font-semibold">Read more</span>
                         <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
@@ -606,7 +620,7 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
-                    <div className="mt-auto flex items-center justify-between rounded-[8px] bg-ink px-4 py-3 text-white transition group-hover:bg-copper">
+                    <div className="mt-auto flex items-center justify-between rounded-[8px] border border-line bg-graphite px-4 py-3 text-white transition group-hover:border-teal group-hover:bg-teal">
                       <span className="text-sm font-semibold">Read more</span>
                       <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </div>
