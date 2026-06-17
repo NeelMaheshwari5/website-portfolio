@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -37,7 +38,6 @@ const experience = [
     logo: "/images/companies/thyssenkrupp.svg",
     logoAlt: "thyssenkrupp logo",
     darkLogoBand: true,
-    icon: Gauge,
     overview:
       "Static equipment analysis spanning refrigerated gas storage, nozzle flexibility, engineering standards, and a faster boiler specification review workflow.",
     skills: ["Static equipment", "Nozzle analysis", "Engineering codes", "Technical bid review", "LLM validation"]
@@ -51,7 +51,6 @@ const experience = [
     logo: "/images/companies/arcatron-frido.png",
     logoAlt: "Frido logo",
     darkLogoBand: false,
-    icon: Ruler,
     overview:
       "Designed a foldable, one-hand-drive wheelchair concept while learning CAD, prototyping, factory workflows, and accessible product development.",
     skills: ["SolidWorks", "Fusion 360", "Mechanism design", "3D printing", "Design for accessibility"]
@@ -292,11 +291,37 @@ function EngineeringSketch() {
 }
 
 export default function Home() {
+  const [isPastHero, setIsPastHero] = useState(false);
+  const [cursor, setCursor] = useState({ x: 66, y: 42 });
+
+  useEffect(() => {
+    const updateNav = () => {
+      const hero = document.getElementById("top");
+      const threshold = hero ? hero.offsetHeight - 80 : 560;
+      setIsPastHero(window.scrollY > threshold);
+    };
+
+    updateNav();
+    window.addEventListener("scroll", updateNav, { passive: true });
+    window.addEventListener("resize", updateNav);
+
+    return () => {
+      window.removeEventListener("scroll", updateNav);
+      window.removeEventListener("resize", updateNav);
+    };
+  }, []);
+
   return (
     <main className="noise overflow-hidden">
-      <nav className="fixed left-0 right-0 top-0 z-40 border-b border-white/10 bg-ink/92 text-white backdrop-blur-xl">
+      <nav
+        className={`fixed left-0 right-0 top-0 z-40 border-b backdrop-blur-xl transition duration-300 ${
+          isPastHero
+            ? "border-line bg-paper/92 text-ink shadow-panel"
+            : "border-white/10 bg-ink/72 text-white"
+        }`}
+      >
         <div className="section-shell flex h-16 items-center justify-between gap-5">
-          <a href="#top" className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white">
+          <a href="#top" className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
             NM
           </a>
           <div className="hidden items-center gap-1 md:flex">
@@ -304,7 +329,11 @@ export default function Home() {
               <a
                 key={link.label}
                 href={link.href}
-                className="rounded-[8px] px-3 py-2 text-sm font-semibold text-white/72 transition hover:bg-white/8 hover:text-white"
+                className={`rounded-[8px] px-3 py-2 text-sm font-semibold transition ${
+                  isPastHero
+                    ? "text-graphite hover:bg-field hover:text-teal"
+                    : "text-white/72 hover:bg-white/8 hover:text-white"
+                }`}
               >
                 {link.label}
               </a>
@@ -313,16 +342,36 @@ export default function Home() {
         </div>
       </nav>
 
-      <section id="top" className="relative min-h-screen overflow-hidden bg-ink pt-16 text-white">
+      <section
+        id="top"
+        className="relative min-h-screen overflow-hidden bg-ink pt-16 text-white"
+        onPointerMove={(event) => {
+          const rect = event.currentTarget.getBoundingClientRect();
+          setCursor({
+            x: ((event.clientX - rect.left) / rect.width) * 100,
+            y: ((event.clientY - rect.top) / rect.height) * 100
+          });
+        }}
+      >
         <div className="absolute inset-y-0 left-0 w-1 bg-teal" />
-        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(203,213,225,0.16)_1px,transparent_1px),linear-gradient(90deg,rgba(203,213,225,0.16)_1px,transparent_1px)] [background-size:32px_32px]" />
-        <div className="absolute right-[8%] top-[18%] hidden h-48 w-48 border border-white/10 lg:block" />
-        <div className="absolute right-[16%] top-[31%] hidden h-48 w-48 border border-teal/45 lg:block" />
+        <div
+          className="absolute inset-0 transition-[background] duration-300"
+          style={{
+            background: `radial-gradient(circle at ${cursor.x}% ${cursor.y}%, rgba(37, 99, 235, 0.34), rgba(37, 99, 235, 0.12) 18%, transparent 38%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.12), transparent 30%)`
+          }}
+        />
+        <motion.div
+          className="absolute right-[8%] top-[18%] hidden h-48 w-48 border border-white/10 lg:block"
+          animate={{ x: (cursor.x - 50) * 0.16, y: (cursor.y - 50) * 0.12 }}
+          transition={{ type: "spring", stiffness: 45, damping: 18 }}
+        />
+        <motion.div
+          className="absolute right-[16%] top-[31%] hidden h-48 w-48 border border-teal/45 lg:block"
+          animate={{ x: (cursor.x - 50) * -0.1, y: (cursor.y - 50) * -0.08 }}
+          transition={{ type: "spring", stiffness: 45, damping: 18 }}
+        />
         <div className="section-shell relative z-10 flex min-h-[calc(100vh-4rem)] items-center pb-20 pt-16">
           <motion.div
-            initial={{ opacity: 0, y: 34 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-4xl"
           >
             <div className="mb-7 inline-flex items-center gap-2 rounded-[8px] border border-white/10 bg-white/8 px-3 py-2 text-sm font-medium text-white/74 backdrop-blur">
@@ -385,7 +434,6 @@ export default function Home() {
           />
           <div className="grid gap-5 md:grid-cols-2">
             {experience.map((item, index) => {
-              const Icon = item.icon;
               return (
                 <motion.div
                   key={item.company}
@@ -416,9 +464,6 @@ export default function Home() {
                           className="object-contain object-left"
                         />
                       </div>
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] border border-line bg-white text-teal transition group-hover:border-teal group-hover:bg-copper group-hover:text-white">
-                        <Icon className="h-5 w-5" />
-                      </div>
                     </div>
                     <div className="relative flex flex-1 flex-col overflow-hidden p-7">
                       <div>
@@ -433,7 +478,7 @@ export default function Home() {
                         </p>
                       </div>
                       <p className="mt-6 text-base leading-7 text-graphite">{item.overview}</p>
-                      <div className="mt-auto flex items-center justify-between rounded-[8px] border border-line bg-graphite px-4 py-3 text-white transition group-hover:border-teal group-hover:bg-teal">
+                      <div className="mt-auto flex items-center justify-between border-t border-line pt-5 text-teal">
                         <span className="text-sm font-semibold">Read more</span>
                         <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
@@ -607,7 +652,6 @@ export default function Home() {
                           {item.title}
                         </h3>
                       </div>
-                      <Award className="h-6 w-6 shrink-0 text-copper" />
                     </div>
                     <p className="mt-5 leading-7 text-graphite">{item.overview}</p>
                     <div className="mt-6 flex flex-wrap gap-2">
@@ -620,7 +664,7 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
-                    <div className="mt-auto flex items-center justify-between rounded-[8px] border border-line bg-graphite px-4 py-3 text-white transition group-hover:border-teal group-hover:bg-teal">
+                    <div className="mt-auto flex items-center justify-between border-t border-line pt-5 text-teal">
                       <span className="text-sm font-semibold">Read more</span>
                       <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </div>
@@ -660,12 +704,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="skills" className="border-y border-line bg-white py-24 md:py-32">
+      <section id="skills" className="border-y border-white/10 bg-ink py-24 text-white md:py-32">
         <div className="section-shell">
           <SectionTitle
             eyebrow="Technical Stack"
             title="A practical toolkit for design, analysis, fabrication, and controls."
             text="The portfolio is organized around the tools and processes used repeatedly across my work: CAD, programming, lab fabrication, and core mechanical engineering fundamentals."
+            tone="dark"
           />
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {skillGroups.map((group, index) => {
@@ -677,7 +722,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.06 }}
-                  className="rounded-[8px] border border-line bg-paper p-6"
+                  className="rounded-[8px] border border-white/14 bg-white p-6 shadow-soft"
                 >
                   <Icon className="h-6 w-6 text-teal" />
                   <h3 className="mt-5 font-display text-xl font-semibold text-ink">{group.title}</h3>
@@ -685,7 +730,7 @@ export default function Home() {
                     {group.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="rounded-[8px] bg-white px-3 py-2 text-sm font-medium text-graphite"
+                        className="rounded-[8px] border border-line bg-field px-3 py-2 text-sm font-medium text-ink"
                       >
                         {skill}
                       </span>
