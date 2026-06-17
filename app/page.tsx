@@ -85,7 +85,7 @@ const projects = [
     date: "In progress",
     href: "/projects/printess-3d-bioprinter",
     icon: Printer,
-    image: "/images/printess/bioprinter.png",
+    image: "/images/printess/printessa.webp",
     summary:
       "An in-progress bioprinting project focused on precise material deposition, motion control, and clean mechanical packaging.",
     skills: ["Bioprinting", "Precision motion", "Mechanical packaging", "CAD", "Prototype planning"]
@@ -358,7 +358,7 @@ export default function Home() {
               {heroActions.map((action) => {
                 const Icon = action.icon;
                 const className =
-                  "group inline-flex min-h-[3.25rem] items-center justify-between gap-3 rounded-[8px] border border-white/10 bg-white/[0.075] px-4 py-3 text-sm font-semibold text-white shadow-panel backdrop-blur transition hover:-translate-y-0.5 hover:border-teal hover:bg-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 focus-visible:ring-offset-ink";
+                  "button-3d group inline-flex min-h-[3.25rem] items-center justify-between gap-3 rounded-[8px] border border-white/10 bg-white/[0.075] px-4 py-3 text-sm font-semibold text-white backdrop-blur hover:border-teal hover:bg-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 focus-visible:ring-offset-ink";
                 const content = (
                   <>
                     <span className="inline-flex items-center gap-2">
@@ -415,7 +415,7 @@ export default function Home() {
                 >
                   <Link
                     href={item.href}
-                    className="flex h-full min-h-[330px] cursor-pointer flex-col overflow-hidden rounded-[8px] border-2 border-ink/12 bg-white shadow-panel transition duration-300 hover:-translate-y-1 hover:border-teal hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
+                    className="card-3d flex h-full min-h-[330px] cursor-pointer flex-col overflow-hidden rounded-[8px] border-2 border-ink/12 bg-white hover:border-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
                   >
                     <div
                       className={`flex items-center justify-between border-b px-7 py-5 ${
@@ -483,7 +483,7 @@ export default function Home() {
       <section id="projects" className="bg-ink py-24 text-white md:py-32">
         <div className="section-shell">
           <SectionTitle
-            eyebrow="Project"
+            eyebrow="Projects"
             title="Robotics, mobility, and autonomous systems shaped through iteration."
             text="These builds highlight practical prototyping, mechanical design, controls thinking, and the discipline to move from constraints to working demonstrations."
             tone="dark"
@@ -502,7 +502,7 @@ export default function Home() {
                 >
                   <Link
                     href={project.href}
-                    className="flex h-full min-h-[510px] cursor-pointer flex-col overflow-hidden rounded-[8px] border border-white/14 bg-white/[0.055] transition duration-300 hover:-translate-y-1 hover:border-teal hover:bg-white/[0.08] hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper focus-visible:ring-offset-4 focus-visible:ring-offset-ink"
+                    className="card-3d flex h-full min-h-[510px] cursor-pointer flex-col overflow-hidden rounded-[8px] border border-white/14 bg-white/[0.055] hover:border-teal hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper focus-visible:ring-offset-4 focus-visible:ring-offset-ink"
                   >
                     <div className="image-shine relative aspect-[4/3] overflow-hidden border-b border-white/12">
                       <Image
@@ -510,12 +510,14 @@ export default function Home() {
                         alt={`${project.title} engineering project visual`}
                         fill
                         sizes="(min-width: 1024px) 32vw, (min-width: 768px) 48vw, 100vw"
-                        className={`object-cover transition duration-500 group-hover:scale-[1.025] ${
-                          project.title === "NovoPrint"
-                            ? "object-center"
+                        className={`transition duration-500 group-hover:scale-[1.025] ${
+                          project.title === "Printess 3D Bioprinter"
+                            ? "object-contain bg-field p-2"
+                            : project.title === "NovoPrint"
+                              ? "object-cover object-center"
                               : project.title === "ASME Autonomous Challenge"
-                                ? "object-[78%_center]"
-                                : "object-center"
+                                ? "object-cover object-[78%_center]"
+                                : "object-cover object-center"
                         }`}
                       />
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,26,31,0.02),rgba(23,26,31,0.5))]" />
@@ -596,7 +598,7 @@ export default function Home() {
               >
                 <Link
                   href={item.href}
-                  className="flex h-full min-h-[360px] cursor-pointer flex-col overflow-hidden rounded-[8px] border border-line bg-white shadow-panel outline-none transition duration-300 hover:-translate-y-1 hover:border-teal hover:shadow-soft focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
+                  className="card-3d flex h-full min-h-[360px] cursor-pointer flex-col overflow-hidden rounded-[8px] border border-line bg-white outline-none hover:border-teal focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4"
                 >
                   <div className="relative flex flex-1 flex-col overflow-hidden p-7">
                     <div className="flex items-start justify-between gap-4">
@@ -661,7 +663,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.06 }}
-                  className="rounded-[8px] border border-white/14 bg-white p-6 shadow-soft"
+                  className="card-3d rounded-[8px] border border-white/14 bg-white p-6"
                 >
                   <Icon className="h-6 w-6 text-teal" />
                   <h3 className="mt-5 font-display text-xl font-semibold text-ink">{group.title}</h3>
@@ -697,7 +699,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-2">
-            <div className="rounded-[8px] border border-line bg-white p-6 shadow-panel">
+            <div className="card-3d rounded-[8px] border border-line bg-white p-6">
               <GraduationCap className="h-6 w-6 text-teal" />
               <h3 className="mt-5 font-display text-xl font-semibold text-ink">Academic Focus</h3>
               <p className="mt-3 leading-7 text-graphite">
@@ -705,7 +707,7 @@ export default function Home() {
                 engineering materials, and fluid dynamics.
               </p>
             </div>
-            <div className="rounded-[8px] border border-line bg-white p-6 shadow-panel">
+            <div className="card-3d rounded-[8px] border border-line bg-white p-6">
               <Award className="h-6 w-6 text-copper" />
               <h3 className="mt-5 font-display text-xl font-semibold text-ink">Leadership</h3>
               <ul className="mt-3 space-y-3 text-sm leading-6 text-graphite">
@@ -735,14 +737,14 @@ export default function Home() {
           <div className="flex flex-wrap gap-3">
             <a
               href="mailto:neel5@illinois.edu"
-              className="inline-flex h-12 items-center gap-2 rounded-[8px] bg-white px-5 text-sm font-semibold text-ink transition hover:bg-field"
+              className="button-3d inline-flex h-12 items-center gap-2 rounded-[8px] bg-white px-5 text-sm font-semibold text-ink hover:bg-field"
             >
               <Mail className="h-4 w-4" />
               neel5@illinois.edu
             </a>
             <a
               href="https://www.linkedin.com/in/neel-maheshwari-9b9402245"
-              className="inline-flex h-12 items-center gap-2 rounded-[8px] border border-white/18 px-5 text-sm font-semibold text-white transition hover:border-copper hover:text-copper"
+              className="button-3d inline-flex h-12 items-center gap-2 rounded-[8px] border border-white/18 px-5 text-sm font-semibold text-white hover:border-copper hover:text-copper"
             >
               <Linkedin className="h-4 w-4" />
               LinkedIn

@@ -65,6 +65,50 @@ body {
   transform: translateX(120%);
 }
 
+.card-3d {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 2px 0 rgba(17, 24, 39, 0.16),
+    0 18px 36px rgba(17, 24, 39, 0.12);
+  transform: translateY(0);
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease,
+    border-color 240ms ease,
+    background-color 240ms ease;
+}
+
+.card-3d:hover,
+.group:hover .card-3d {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    0 4px 0 rgba(17, 24, 39, 0.18),
+    0 28px 54px rgba(17, 24, 39, 0.18);
+  transform: translateY(-4px);
+}
+
+.button-3d {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 2px 0 rgba(17, 24, 39, 0.18),
+    0 12px 22px rgba(17, 24, 39, 0.12);
+  transform: translateY(0);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease,
+    color 220ms ease;
+}
+
+.button-3d:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 4px 0 rgba(17, 24, 39, 0.2),
+    0 18px 30px rgba(17, 24, 39, 0.18);
+  transform: translateY(-2px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
