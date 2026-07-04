@@ -5,6 +5,7 @@ import {
   Droplets,
   FlaskConical,
   Gauge,
+  Layers3,
   ScanLine,
   Scale,
   SlidersHorizontal
@@ -12,8 +13,8 @@ import {
 
 const overviewStats = [
   { label: "Research Area", value: "Yield-stress fluids" },
-  { label: "Surface", value: "Permeable mesh" },
-  { label: "Current Focus", value: "Servo-controlled release" }
+  { label: "Materials", value: "Mesh composites" },
+  { label: "Current Focus", value: "Controlled deposition" }
 ];
 
 const experimentContext = [
@@ -73,7 +74,9 @@ const skills = [
   "CAD packaging",
   "Measurement tradeoff analysis",
   "Micro-CT planning",
-  "Mass-balance validation"
+  "Mass-balance validation",
+  "Gel 3D printing",
+  "Composite development"
 ];
 
 export default function EwoldtResearchPage() {
@@ -108,8 +111,9 @@ export default function EwoldtResearchPage() {
           <p className="mt-7 max-w-4xl text-lg leading-8 text-graphite md:text-xl">
             I am helping develop a new experimental setup inspired by prior yield-stress
             fluid drop-impact work. The goal is to make drop release more repeatable with
-            servo actuation and compare ways to measure how much fluid passes through a
-            permeable mesh.
+            servo actuation, compare ways to measure how much fluid passes through a
+            permeable mesh, and develop patterned fiberglass composites using heat-cured
+            gels.
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             {overviewStats.map((stat) => (
@@ -178,6 +182,44 @@ export default function EwoldtResearchPage() {
                 <p className="text-base leading-7 text-graphite">{item}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-line bg-white py-20 md:py-28">
+        <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+              Composite Development
+            </p>
+            <h2 className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
+              Printing functional gel patterns onto fiberglass mesh.
+            </h2>
+            <p className="mt-6 max-w-3xl text-lg leading-9 text-graphite">
+              Alongside the drop-impact apparatus, I am developing a fiberglass-based
+              composite material using a gel 3D printer. Different heat-cured gels are
+              deposited in controlled patterns across the fiberglass mesh, creating a way
+              to study how material choice and printed geometry change the behavior of the
+              combined structure.
+            </p>
+          </div>
+          <div className="card-3d rounded-[8px] border border-line bg-field p-7 md:p-9">
+            <Layers3 className="h-8 w-8 text-copper" />
+            <h3 className="mt-5 font-display text-2xl font-semibold text-ink">
+              An iterative materials workflow
+            </h3>
+            <div className="mt-6 grid gap-5 sm:grid-cols-3">
+              {[
+                ["Deposit", "Use the gel printer to place repeatable patterns onto the mesh."],
+                ["Cure", "Heat-cure different gel formulations to form the composite."],
+                ["Compare", "Evaluate how pattern and material choices affect the finished structure."]
+              ].map(([title, text]) => (
+                <div key={title} className="border-l-2 border-copper pl-4">
+                  <p className="font-display text-lg font-semibold text-ink">{title}</p>
+                  <p className="mt-2 text-base leading-7 text-graphite">{text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
