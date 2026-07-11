@@ -60,121 +60,49 @@ body:has(.site-topbar) main > nav:first-child {
   overflow: hidden;
 }
 
-.hero-infinity-portal {
+.hero-precision-bg {
   position: absolute;
-  right: max(3vw, 36px);
-  top: 17%;
-  width: min(42vw, 560px);
-  height: min(42vw, 420px);
+  inset: 0;
+  overflow: hidden;
   pointer-events: none;
-  opacity: 0.76;
-  perspective: 900px;
-  transform: rotate(-8deg);
   z-index: 1;
 }
 
-.hero-infinity-portal::before {
+.hero-precision-bg::before {
   content: "";
   position: absolute;
-  inset: 11% 1% 4%;
-  border-radius: 12px;
+  right: -7%;
+  top: 11%;
+  width: min(58vw, 720px);
+  height: min(64vw, 560px);
+  border: 1px solid rgba(248, 250, 252, 0.09);
+  border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(255, 95, 5, 0.12) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(125, 211, 252, 0.08) 1px, transparent 1px),
-    linear-gradient(135deg, rgba(10, 22, 42, 0.62), rgba(19, 41, 75, 0.14));
-  background-size: 18px 18px, 18px 18px, 100% 100%;
+    radial-gradient(circle at 62% 34%, rgba(255, 95, 5, 0.2), transparent 23%),
+    radial-gradient(circle at 34% 70%, rgba(37, 99, 235, 0.2), transparent 27%),
+    linear-gradient(135deg, rgba(248, 250, 252, 0.08), rgba(248, 250, 252, 0.015) 42%, transparent);
   box-shadow:
-    inset 0 0 55px rgba(7, 14, 28, 0.72),
-    0 26px 90px rgba(7, 14, 28, 0.42);
-  clip-path: polygon(13% 6%, 88% 0, 100% 77%, 10% 100%, 0 29%);
-  transform: rotateX(64deg) translateY(38px);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -90px 120px rgba(7, 14, 28, 0.24),
+    0 38px 120px rgba(7, 14, 28, 0.34);
+  transform: skewX(-9deg) rotate(-4deg);
+  opacity: 0.82;
 }
 
-.portal-lobe {
+.hero-precision-bg::after {
+  content: "";
   position: absolute;
-  top: 39%;
-  width: 255px;
-  height: 255px;
-  transform-style: preserve-3d;
-  transform: rotateX(62deg) rotateZ(var(--lobe-tilt, 0deg));
-  filter: drop-shadow(0 0 24px rgba(255, 95, 5, 0.32));
-}
-
-.portal-lobe-left {
-  --lobe-tilt: -11deg;
-  left: 4%;
-}
-
-.portal-lobe-right {
-  --lobe-tilt: 11deg;
   right: 4%;
-}
-
-.portal-core {
-  position: absolute;
-  inset: 38%;
+  top: 15%;
+  width: min(42vw, 540px);
+  height: min(42vw, 540px);
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(255, 95, 5, 0.95), rgba(37, 99, 235, 0.46) 42%, transparent 72%);
-  box-shadow:
-    0 0 28px rgba(255, 95, 5, 0.66),
-    0 0 80px rgba(37, 99, 235, 0.45);
-  animation: portal-core-breathe 4.8s ease-in-out infinite;
-}
-
-.portal-lobe span {
-  --ray-index: 0;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 2px;
-  height: 122px;
-  border-radius: 999px;
-  background: linear-gradient(to top, rgba(255, 95, 5, 0), rgba(255, 95, 5, 0.92) 42%, rgba(248, 250, 252, 0.9));
-  box-shadow:
-    0 0 10px rgba(255, 95, 5, 0.55),
-    0 0 22px rgba(37, 99, 235, 0.34);
-  transform-origin: 50% 0;
-  transform:
-    rotate(calc(var(--ray-index) * 10.588deg))
-    translateY(-16px)
-    translateZ(calc(var(--ray-index) * -2px));
-  opacity: 0.32;
-  animation: portal-ray-pulse 3.8s ease-in-out infinite;
-  animation-delay: calc(var(--ray-index) * -0.075s);
-}
-
-.portal-lobe span:nth-child(3n) {
-  background: linear-gradient(to top, rgba(37, 99, 235, 0), rgba(37, 99, 235, 0.85) 45%, rgba(125, 211, 252, 0.92));
-}
-
-.portal-lobe span:nth-child(5n) {
-  height: 146px;
-  width: 3px;
-  opacity: 0.42;
-}
-
-@keyframes portal-ray-pulse {
-  0%,
-  100% {
-    opacity: 0.2;
-    scale: 0.82 0.72;
-  }
-  45% {
-    opacity: 0.82;
-    scale: 1 1.08;
-  }
-}
-
-@keyframes portal-core-breathe {
-  0%,
-  100% {
-    transform: scale(0.85);
-    opacity: 0.58;
-  }
-  50% {
-    transform: scale(1.12);
-    opacity: 0.92;
-  }
+  background:
+    repeating-radial-gradient(circle, rgba(248, 250, 252, 0.13) 0 1px, transparent 1px 38px),
+    conic-gradient(from 220deg, transparent, rgba(255, 95, 5, 0.22), transparent 34%, rgba(37, 99, 235, 0.18), transparent 72%);
+  mask-image: radial-gradient(circle, black 0 49%, transparent 70%);
+  opacity: 0.55;
+  transform: rotate(-16deg);
 }
 
 .image-shine::after {
