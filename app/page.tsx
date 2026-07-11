@@ -305,7 +305,7 @@ export default function Home() {
   return (
     <main className="noise overflow-hidden">
       <motion.div
-        className="fixed left-0 top-0 z-50 h-1 w-full origin-left bg-teal"
+        className="fixed left-0 top-0 z-50 h-1 w-full origin-left bg-gradient-to-r from-illiniOrange via-teal to-illiniBlue"
         style={{ scaleX: scrollScaleX }}
         aria-hidden="true"
       />
@@ -340,7 +340,7 @@ export default function Home() {
 
       <section
         id="top"
-        className="relative min-h-screen overflow-hidden bg-ink pt-16 text-white"
+        className="relative min-h-screen overflow-hidden bg-illiniBlue pt-16 text-white"
         onPointerMove={(event) => {
           const rect = event.currentTarget.getBoundingClientRect();
           event.currentTarget.style.setProperty("--cursor-x", `${((event.clientX - rect.left) / rect.width) * 100}%`);
@@ -351,15 +351,17 @@ export default function Home() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at var(--cursor-x, 62%) var(--cursor-y, 42%), rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0.08) 18%, transparent 38%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.09), transparent 26%)"
+              "radial-gradient(circle at var(--cursor-x, 62%) var(--cursor-y, 42%), rgba(255, 95, 5, 0.22), rgba(37, 99, 235, 0.1) 20%, transparent 40%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.1), transparent 26%), linear-gradient(135deg, rgba(19, 41, 75, 0.2), rgba(17, 24, 39, 0.72))"
           }}
         />
+        <div className="absolute left-0 top-24 h-40 w-1 bg-gradient-to-b from-illiniOrange to-transparent" />
+        <div className="absolute bottom-10 right-[8%] hidden h-px w-72 bg-gradient-to-r from-transparent via-illiniOrange/70 to-transparent lg:block" />
         <div className="section-shell relative z-10 grid min-h-[calc(100vh-4rem)] items-center gap-12 pb-20 pt-16 lg:grid-cols-[minmax(0,1fr)_360px]">
           <motion.div
             className="max-w-4xl"
           >
-            <div className="mb-7 inline-flex items-center gap-2 rounded-[8px] border border-white/10 bg-white/8 px-3 py-2 text-sm font-medium text-white/74 backdrop-blur">
-              <MapPin className="h-4 w-4 text-teal" />
+            <div className="mb-7 inline-flex items-center gap-2 rounded-[8px] border border-white/10 bg-white/8 px-3 py-2 text-sm font-medium text-white/78 backdrop-blur">
+              <MapPin className="h-4 w-4 shrink-0 text-illiniOrange" />
               UIUC Mechanical Engineering, Computer Science Minor
             </div>
             <h1 className="font-display text-5xl font-semibold leading-[0.98] text-white md:text-7xl">
@@ -369,18 +371,30 @@ export default function Home() {
               Mechanical engineer building working hardware across robotic 3D printing,
               thermal test systems, experimental materials, and product-driven CAD.
             </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {["Illinois engineering", "CAD to build", "Research hardware"].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-white/10 bg-white/[0.065] px-3 py-1.5 text-xs font-semibold text-white/70"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
             <div className="mt-9 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
               {heroActions.map((action) => {
                 const Icon = action.icon;
                 const className =
-                  "button-3d group inline-flex min-h-[3.25rem] items-center justify-between gap-3 rounded-[8px] border border-white/10 bg-white/[0.075] px-4 py-3 text-sm font-semibold text-white backdrop-blur hover:border-teal hover:bg-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 focus-visible:ring-offset-ink";
+                  "button-3d group inline-flex min-h-[3.25rem] items-center justify-between gap-3 overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.075] px-4 py-3 text-sm font-semibold text-white backdrop-blur hover:border-illiniOrange/80 hover:bg-white/[0.12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-illiniOrange focus-visible:ring-offset-4 focus-visible:ring-offset-illiniBlue";
                 const content = (
                   <>
-                    <span className="inline-flex items-center gap-2">
-                      <Icon className="h-4 w-4" />
+                    <span className="inline-flex min-w-0 items-center gap-2">
+                      <Icon className="h-4 w-4 shrink-0 text-white/88" />
                       {action.label}
                     </span>
-                    <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] border border-white/10 bg-white/[0.07] text-illiniOrange transition group-hover:border-illiniOrange/50 group-hover:bg-illiniOrange group-hover:text-white">
+                      <ArrowUpRight className="h-4 w-4 shrink-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2.4} />
+                    </span>
                   </>
                 );
 
@@ -413,13 +427,13 @@ export default function Home() {
             className="relative hidden lg:block"
             aria-label="Current engineering focus areas"
           >
-            <div className="absolute -inset-6 rounded-[8px] bg-[radial-gradient(circle_at_50%_12%,rgba(37,99,235,0.24),transparent_58%)] blur-2xl" />
+            <div className="absolute -inset-6 rounded-[8px] bg-[radial-gradient(circle_at_50%_12%,rgba(255,95,5,0.2),transparent_55%)] blur-2xl" />
             <div className="card-3d relative overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.075] p-5 text-white backdrop-blur-xl">
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
                   Current Build Space
                 </p>
-                <span className="h-2 w-2 rounded-full bg-copper shadow-[0_0_18px_rgba(249,115,22,0.8)]" />
+                <span className="h-2 w-2 rounded-full bg-illiniOrange shadow-[0_0_18px_rgba(255,95,5,0.82)]" />
               </div>
               <p className="mt-4 text-sm leading-6 text-white/62">
                 The hands-on work I am actively developing right now.
@@ -428,10 +442,10 @@ export default function Home() {
                 {heroHighlights.map((item, index) => (
                   <div
                     key={item.label}
-                    className="rounded-[8px] border border-white/10 bg-ink/36 p-4"
+                    className="rounded-[8px] border border-white/10 bg-ink/36 p-4 transition hover:border-illiniOrange/45 hover:bg-white/[0.08]"
                   >
                     <div className="flex items-center justify-between gap-4">
-                      <p className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-copper">
+                      <p className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-illiniOrange">
                         {item.label}
                       </p>
                       <span className="font-display text-xs font-semibold text-white/32">
@@ -448,7 +462,7 @@ export default function Home() {
                       {item.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-white/10 bg-white/[0.06] px-2.5 py-1 text-[0.68rem] font-semibold text-white/64"
+                          className="rounded-full border border-white/10 bg-white/[0.06] px-2.5 py-1 text-[0.68rem] font-semibold text-white/68"
                         >
                           {tag}
                         </span>

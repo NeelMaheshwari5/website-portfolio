@@ -14,7 +14,9 @@ const config: Config = {
         paper: "#F8FAFC",
         field: "#E2E8F0",
         teal: "#2563EB",
-        copper: "#2563EB",
+        copper: "#FF5F05",
+        illiniBlue: "#13294B",
+        illiniOrange: "#FF5F05",
         steel: "#64748B"
       },
       boxShadow: {
