@@ -16,7 +16,7 @@ const contributions = [
     title: "Mechanical design",
     icon: Cog,
     text:
-      "I modeled the base and extruder mounting bracket in Fusion 360, designing around printed tolerances, service access, and clean assembly."
+      "I modeled the base and the Ender 3 hotend and extruder mounting bracket in Fusion 360, designing the bracket to hold the print head at the tip of the arm."
   },
   {
     title: "Electrical integration",
@@ -28,7 +28,7 @@ const contributions = [
     title: "Build and test",
     icon: Wrench,
     text:
-      "I helped turn the CAD into a functioning system, then checked homing, joint motion, coordinated paths, positioning repeatability, backlash, and CAN stability."
+      "I helped turn the CAD into a functioning system, including sanding and Dremel work to correct print tolerancing issues before motion testing."
   }
 ];
 
@@ -142,14 +142,14 @@ export default function NovoPrintPage() {
               Extruder Mounting
             </p>
             <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
-              A printed bracket that made the extruder easier to mount, adjust, and service.
+              A printed bracket for holding the Ender 3 hotend and extruder at the arm tip.
             </h2>
             <p className="mt-6 text-lg leading-9 text-graphite">
-              I designed the extruder mounting bracket so the toolhead could attach
-              securely to the robotic arm without making the rest of the structure
-              difficult to assemble. The bracket was shaped around printed part
-              clearances, fastener access, wiring paths, and the need to remove or
-              adjust the extruder during testing.
+              I designed the extruder mounting bracket specifically around the
+              Ender 3 hotend, extruder, and the tip geometry of the robotic arm.
+              The goal was simple and practical: hold the print head securely at the end of the
+              mechanism while keeping the connection printable, accessible, and
+              reasonable to remove during testing.
             </p>
           </div>
         </div>
@@ -169,10 +169,13 @@ export default function NovoPrintPage() {
               actually come together on the bench. That meant planning fastening
               order, keeping tools clear of tight spaces, routing wires before
               joints became boxed in, and making sure printed parts could be
-              replaced without tearing down the whole mechanism.
+              replaced without tearing down the whole mechanism. When printed
+              parts came out slightly tight or misaligned, I used sanding and
+              Dremel work to fix tolerance issues and get the assemblies moving
+              smoothly.
             </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {[
               {
                 title: "Fastener Access",
@@ -185,6 +188,10 @@ export default function NovoPrintPage() {
               {
                 title: "Serviceability",
                 text: "The toolhead and printed modules were kept practical to remove, inspect, and revise during testing."
+              },
+              {
+                title: "Tolerance Fixes",
+                text: "Sanding and Dremel work helped correct tight printed fits so the mechanism could assemble and move smoothly."
               }
             ].map((item) => (
               <article
