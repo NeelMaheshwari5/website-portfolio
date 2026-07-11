@@ -216,19 +216,21 @@ const heroHighlights = [
   {
     label: "Ewoldt Research",
     title: "Gel-patterned fiberglass mesh composites",
+    href: "/research/ewoldt",
     detail: "Designing heat-cured gel patterns on fiberglass mesh with a gel 3D printer.",
     tags: ["Gel printing", "Fiberglass mesh", "Composite testing"]
   },
   {
     label: "Printess",
     title: "Low-cost 3D bioprinter build",
+    href: "/projects/printess-3d-bioprinter",
     detail: "Working through construction, syringe extrusion, calibration, and operation.",
     tags: ["Bioprinting", "Motion control", "Syringe extrusion"]
   }
 ];
 
 const heroProcess = ["Design", "Build", "Test", "Iterate"];
-const infinityDots = Array.from({ length: 34 }, (_, index) => index);
+const tunnelRays = Array.from({ length: 34 }, (_, index) => index);
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -357,12 +359,17 @@ export default function Home() {
               "radial-gradient(circle at var(--cursor-x, 62%) var(--cursor-y, 42%), rgba(255, 95, 5, 0.22), rgba(37, 99, 235, 0.1) 20%, transparent 40%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.1), transparent 26%), linear-gradient(135deg, rgba(19, 41, 75, 0.2), rgba(17, 24, 39, 0.72))"
           }}
         />
-        <div className="hero-infinity-field" aria-hidden="true">
-          {infinityDots.map((dot) => (
-            <span
-              key={dot}
-              style={{ "--dot-index": dot } as CSSProperties}
-            />
+        <div className="hero-infinity-portal" aria-hidden="true">
+          {["left", "right"].map((side) => (
+            <div key={side} className={`portal-lobe portal-lobe-${side}`}>
+              <div className="portal-core" />
+              {tunnelRays.map((ray) => (
+                <span
+                  key={`${side}-${ray}`}
+                  style={{ "--ray-index": ray } as CSSProperties}
+                />
+              ))}
+            </div>
           ))}
         </div>
         <div className="absolute left-0 top-24 h-40 w-1 bg-gradient-to-b from-illiniOrange to-transparent" />
@@ -463,8 +470,9 @@ export default function Home() {
               </p>
               <div className="mt-5 space-y-4">
                 {heroHighlights.map((item, index) => (
-                  <div
+                  <Link
                     key={item.label}
+                    href={item.href}
                     className="rounded-[8px] border border-white/10 bg-ink/36 p-4 transition hover:border-illiniOrange/45 hover:bg-white/[0.08]"
                   >
                     <div className="flex items-center justify-between gap-4">
@@ -491,7 +499,7 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

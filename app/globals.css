@@ -60,76 +60,120 @@ body:has(.site-topbar) main > nav:first-child {
   overflow: hidden;
 }
 
-.hero-infinity-field {
+.hero-infinity-portal {
   position: absolute;
-  inset: 0;
-  overflow: hidden;
+  right: max(3vw, 36px);
+  top: 17%;
+  width: min(42vw, 560px);
+  height: min(42vw, 420px);
   pointer-events: none;
-  opacity: 0.72;
-  mask-image: linear-gradient(90deg, transparent, black 14%, black 86%, transparent);
+  opacity: 0.76;
+  perspective: 900px;
+  transform: rotate(-8deg);
+  z-index: 1;
 }
 
-.hero-infinity-field span {
-  --dot-index: 0;
+.hero-infinity-portal::before {
+  content: "";
   position: absolute;
-  left: 68%;
-  top: 45%;
-  width: 4px;
-  height: 4px;
-  border-radius: 999px;
-  background: #ff5f05;
+  inset: 11% 1% 4%;
+  border-radius: 12px;
+  background:
+    linear-gradient(90deg, rgba(255, 95, 5, 0.12) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(125, 211, 252, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(10, 22, 42, 0.62), rgba(19, 41, 75, 0.14));
+  background-size: 18px 18px, 18px 18px, 100% 100%;
   box-shadow:
-    0 0 12px rgba(255, 95, 5, 0.52),
-    0 0 22px rgba(37, 99, 235, 0.32);
-  opacity: 0;
-  transform: translate3d(0, 0, 0);
-  animation: infinity-drift 10s linear infinite;
-  animation-delay: calc(var(--dot-index) * -0.285s);
+    inset 0 0 55px rgba(7, 14, 28, 0.72),
+    0 26px 90px rgba(7, 14, 28, 0.42);
+  clip-path: polygon(13% 6%, 88% 0, 100% 77%, 10% 100%, 0 29%);
+  transform: rotateX(64deg) translateY(38px);
 }
 
-.hero-infinity-field span:nth-child(3n) {
+.portal-lobe {
+  position: absolute;
+  top: 39%;
+  width: 255px;
+  height: 255px;
+  transform-style: preserve-3d;
+  transform: rotateX(62deg) rotateZ(var(--lobe-tilt, 0deg));
+  filter: drop-shadow(0 0 24px rgba(255, 95, 5, 0.32));
+}
+
+.portal-lobe-left {
+  --lobe-tilt: -11deg;
+  left: 4%;
+}
+
+.portal-lobe-right {
+  --lobe-tilt: 11deg;
+  right: 4%;
+}
+
+.portal-core {
+  position: absolute;
+  inset: 38%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 95, 5, 0.95), rgba(37, 99, 235, 0.46) 42%, transparent 72%);
+  box-shadow:
+    0 0 28px rgba(255, 95, 5, 0.66),
+    0 0 80px rgba(37, 99, 235, 0.45);
+  animation: portal-core-breathe 4.8s ease-in-out infinite;
+}
+
+.portal-lobe span {
+  --ray-index: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 122px;
+  border-radius: 999px;
+  background: linear-gradient(to top, rgba(255, 95, 5, 0), rgba(255, 95, 5, 0.92) 42%, rgba(248, 250, 252, 0.9));
+  box-shadow:
+    0 0 10px rgba(255, 95, 5, 0.55),
+    0 0 22px rgba(37, 99, 235, 0.34);
+  transform-origin: 50% 0;
+  transform:
+    rotate(calc(var(--ray-index) * 10.588deg))
+    translateY(-16px)
+    translateZ(calc(var(--ray-index) * -2px));
+  opacity: 0.32;
+  animation: portal-ray-pulse 3.8s ease-in-out infinite;
+  animation-delay: calc(var(--ray-index) * -0.075s);
+}
+
+.portal-lobe span:nth-child(3n) {
+  background: linear-gradient(to top, rgba(37, 99, 235, 0), rgba(37, 99, 235, 0.85) 45%, rgba(125, 211, 252, 0.92));
+}
+
+.portal-lobe span:nth-child(5n) {
+  height: 146px;
   width: 3px;
-  height: 3px;
-  background: #7dd3fc;
+  opacity: 0.42;
 }
 
-.hero-infinity-field span:nth-child(4n) {
-  background: rgba(248, 250, 252, 0.88);
+@keyframes portal-ray-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    scale: 0.82 0.72;
+  }
+  45% {
+    opacity: 0.82;
+    scale: 1 1.08;
+  }
 }
 
-@keyframes infinity-drift {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 0, 0) scale(0.65);
-  }
-  8% {
-    opacity: 0.92;
-  }
-  12.5% {
-    transform: translate3d(78px, -44px, 0) scale(0.9);
-  }
-  25% {
-    transform: translate3d(156px, 0, 0) scale(1);
-  }
-  37.5% {
-    transform: translate3d(78px, 44px, 0) scale(0.9);
+@keyframes portal-core-breathe {
+  0%,
+  100% {
+    transform: scale(0.85);
+    opacity: 0.58;
   }
   50% {
-    opacity: 0.72;
-    transform: translate3d(0, 0, 0) scale(0.72);
-  }
-  62.5% {
-    transform: translate3d(-78px, -44px, 0) scale(0.9);
-  }
-  75% {
-    transform: translate3d(-156px, 0, 0) scale(1);
-  }
-  87.5% {
-    transform: translate3d(-78px, 44px, 0) scale(0.9);
-  }
-  100% {
-    opacity: 0;
-    transform: translate3d(0, 0, 0) scale(0.65);
+    transform: scale(1.12);
+    opacity: 0.92;
   }
 }
 
