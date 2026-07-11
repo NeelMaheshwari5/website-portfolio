@@ -358,7 +358,7 @@ export default function Home() {
         />
         <div className="absolute left-0 top-24 h-40 w-1 bg-gradient-to-b from-illiniOrange to-transparent" />
         <div className="absolute bottom-10 right-[8%] hidden h-px w-72 bg-gradient-to-r from-transparent via-illiniOrange/70 to-transparent lg:block" />
-        <div className="section-shell relative z-10 grid min-h-[calc(100vh-4rem)] items-center gap-12 pb-20 pt-16 lg:grid-cols-[minmax(0,1fr)_360px]">
+        <div className="section-shell relative z-10 grid min-h-[calc(100vh-4rem)] items-center gap-12 pb-20 pt-16 lg:grid-cols-[minmax(0,1fr)_340px]">
           <motion.div
             className="max-w-4xl"
           >
@@ -419,22 +419,22 @@ export default function Home() {
             className="relative hidden lg:block"
             aria-label="Current engineering focus areas"
           >
-            <div className="card-3d relative overflow-hidden rounded-[8px] border border-white/12 bg-ink/78 p-5 text-white shadow-soft">
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <div className="card-3d relative overflow-hidden rounded-[8px] border border-white/12 bg-ink/84 p-4 text-white shadow-soft">
+              <div className="flex items-center justify-between border-b border-white/10 pb-3">
                 <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
                   Current Build Space
                 </p>
                 <span className="h-2 w-2 rounded-full bg-illiniOrange shadow-[0_0_18px_rgba(255,95,5,0.82)]" />
               </div>
-              <p className="mt-4 text-sm leading-6 text-white/62">
+              <p className="mt-3 text-sm leading-6 text-white/62">
                 The hands-on work I am actively developing right now.
               </p>
-              <div className="mt-5 space-y-4">
+              <div className="mt-4 space-y-3">
                 {heroHighlights.map((item, index) => (
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="rounded-[8px] border border-white/10 bg-ink/36 p-4 transition hover:border-illiniOrange/45 hover:bg-white/[0.08]"
+                    className="group/current block rounded-[8px] border border-white/10 bg-white/[0.045] p-3.5 transition hover:-translate-y-0.5 hover:border-illiniOrange/45 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-illiniOrange"
                   >
                     <div className="flex items-center justify-between gap-4">
                       <p className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-illiniOrange">
@@ -444,17 +444,17 @@ export default function Home() {
                         0{index + 1}
                       </span>
                     </div>
-                    <h2 className="mt-3 font-display text-lg font-semibold leading-tight text-white">
+                    <h2 className="mt-2.5 font-display text-base font-semibold leading-snug text-white">
                       {item.title}
                     </h2>
-                    <p className="mt-2 text-sm leading-6 text-white/62">
+                    <p className="mt-2 text-sm leading-5 text-white/62">
                       {item.detail}
                     </p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {item.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-white/10 bg-white/[0.06] px-2.5 py-1 text-[0.68rem] font-semibold text-white/68"
+                          className="rounded-full border border-white/10 bg-white/[0.06] px-2 py-1 text-[0.65rem] font-semibold leading-none text-white/68"
                         >
                           {tag}
                         </span>
