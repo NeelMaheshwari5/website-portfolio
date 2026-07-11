@@ -356,7 +356,6 @@ export default function Home() {
               "radial-gradient(circle at var(--cursor-x, 62%) var(--cursor-y, 42%), rgba(255, 95, 5, 0.22), rgba(37, 99, 235, 0.1) 20%, transparent 40%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.1), transparent 26%), linear-gradient(135deg, rgba(19, 41, 75, 0.2), rgba(17, 24, 39, 0.72))"
           }}
         />
-        <div className="hero-precision-bg" aria-hidden="true" />
         <div className="absolute left-0 top-24 h-40 w-1 bg-gradient-to-b from-illiniOrange to-transparent" />
         <div className="absolute bottom-10 right-[8%] hidden h-px w-72 bg-gradient-to-r from-transparent via-illiniOrange/70 to-transparent lg:block" />
         <div className="section-shell relative z-10 grid min-h-[calc(100vh-4rem)] items-center gap-12 pb-20 pt-16 lg:grid-cols-[minmax(0,1fr)_360px]">
@@ -420,8 +419,7 @@ export default function Home() {
             className="relative hidden lg:block"
             aria-label="Current engineering focus areas"
           >
-            <div className="absolute -inset-6 rounded-[8px] bg-[radial-gradient(circle_at_50%_12%,rgba(255,95,5,0.2),transparent_55%)] blur-2xl" />
-            <div className="card-3d relative overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.075] p-5 text-white backdrop-blur-xl">
+            <div className="card-3d relative overflow-hidden rounded-[8px] border border-white/12 bg-ink/78 p-5 text-white shadow-soft">
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
                   Current Build Space

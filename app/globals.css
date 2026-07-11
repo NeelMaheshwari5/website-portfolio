@@ -60,51 +60,6 @@ body:has(.site-topbar) main > nav:first-child {
   overflow: hidden;
 }
 
-.hero-precision-bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hero-precision-bg::before {
-  content: "";
-  position: absolute;
-  right: -7%;
-  top: 11%;
-  width: min(58vw, 720px);
-  height: min(64vw, 560px);
-  border: 1px solid rgba(248, 250, 252, 0.09);
-  border-radius: 8px;
-  background:
-    radial-gradient(circle at 62% 34%, rgba(255, 95, 5, 0.2), transparent 23%),
-    radial-gradient(circle at 34% 70%, rgba(37, 99, 235, 0.2), transparent 27%),
-    linear-gradient(135deg, rgba(248, 250, 252, 0.08), rgba(248, 250, 252, 0.015) 42%, transparent);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -90px 120px rgba(7, 14, 28, 0.24),
-    0 38px 120px rgba(7, 14, 28, 0.34);
-  transform: skewX(-9deg) rotate(-4deg);
-  opacity: 0.82;
-}
-
-.hero-precision-bg::after {
-  content: "";
-  position: absolute;
-  right: 4%;
-  top: 15%;
-  width: min(42vw, 540px);
-  height: min(42vw, 540px);
-  border-radius: 999px;
-  background:
-    repeating-radial-gradient(circle, rgba(248, 250, 252, 0.13) 0 1px, transparent 1px 38px),
-    conic-gradient(from 220deg, transparent, rgba(255, 95, 5, 0.22), transparent 34%, rgba(37, 99, 235, 0.18), transparent 72%);
-  mask-image: radial-gradient(circle, black 0 49%, transparent 70%);
-  opacity: 0.55;
-  transform: rotate(-16deg);
-}
-
 .image-shine::after {
   content: "";
   position: absolute;
