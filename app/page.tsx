@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { type CSSProperties, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useSpring } from "framer-motion";
@@ -227,6 +227,9 @@ const heroHighlights = [
   }
 ];
 
+const heroProcess = ["Design", "Build", "Test", "Iterate"];
+const infinityDots = Array.from({ length: 34 }, (_, index) => index);
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 }
@@ -354,6 +357,14 @@ export default function Home() {
               "radial-gradient(circle at var(--cursor-x, 62%) var(--cursor-y, 42%), rgba(255, 95, 5, 0.22), rgba(37, 99, 235, 0.1) 20%, transparent 40%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.1), transparent 26%), linear-gradient(135deg, rgba(19, 41, 75, 0.2), rgba(17, 24, 39, 0.72))"
           }}
         />
+        <div className="hero-infinity-field" aria-hidden="true">
+          {infinityDots.map((dot) => (
+            <span
+              key={dot}
+              style={{ "--dot-index": dot } as CSSProperties}
+            />
+          ))}
+        </div>
         <div className="absolute left-0 top-24 h-40 w-1 bg-gradient-to-b from-illiniOrange to-transparent" />
         <div className="absolute bottom-10 right-[8%] hidden h-px w-72 bg-gradient-to-r from-transparent via-illiniOrange/70 to-transparent lg:block" />
         <div className="section-shell relative z-10 grid min-h-[calc(100vh-4rem)] items-center gap-12 pb-20 pt-16 lg:grid-cols-[minmax(0,1fr)_360px]">
@@ -379,6 +390,18 @@ export default function Home() {
                 >
                   {item}
                 </span>
+              ))}
+            </div>
+            <div className="mt-6 flex max-w-2xl flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/48">
+              {heroProcess.map((step, index) => (
+                <div key={step} className="flex items-center gap-2">
+                  <span className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-white/68">
+                    {step}
+                  </span>
+                  {index < heroProcess.length - 1 && (
+                    <span className="h-px w-7 bg-gradient-to-r from-illiniOrange/70 to-teal/60" />
+                  )}
+                </div>
               ))}
             </div>
             <div className="mt-9 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
