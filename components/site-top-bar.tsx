@@ -23,7 +23,7 @@ export function SiteTopBar() {
       <div className="section-shell flex h-16 items-center justify-between gap-5">
         <Link
           href="/"
-          className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:text-teal"
+          className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white transition duration-300 hover:-translate-y-0.5 hover:text-illiniOrange"
         >
           NM
         </Link>
@@ -32,7 +32,7 @@ export function SiteTopBar() {
             <Link
               key={link.label}
               href={link.href}
-              className="rounded-[8px] px-3 py-2 text-sm font-semibold text-white/72 transition hover:bg-white/8 hover:text-white"
+              className="relative overflow-hidden rounded-[8px] px-3 py-2 text-sm font-semibold text-white/72 transition duration-300 after:absolute after:inset-x-3 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-illiniOrange after:transition-transform after:duration-300 hover:-translate-y-0.5 hover:bg-white/8 hover:text-white hover:after:scale-x-100"
             >
               {link.label}
             </Link>

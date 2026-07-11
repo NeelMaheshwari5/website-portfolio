@@ -325,10 +325,10 @@ export default function Home() {
               <a
                 key={link.label}
                 href={link.href}
-                className={`rounded-[8px] px-3 py-2 text-sm font-semibold transition ${
+                className={`group/nav relative overflow-hidden rounded-[8px] px-3 py-2 text-sm font-semibold transition duration-300 after:absolute after:inset-x-3 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-illiniOrange after:transition-transform after:duration-300 hover:-translate-y-0.5 hover:after:scale-x-100 ${
                   navOnDark
                     ? "text-white/72 hover:bg-white/8 hover:text-white"
-                    : "text-graphite hover:bg-field hover:text-teal"
+                    : "text-graphite hover:bg-field hover:text-illiniBlue"
                 }`}
               >
                 {link.label}
@@ -381,14 +381,14 @@ export default function Home() {
                 </span>
               ))}
             </div>
-            <div className="mt-9 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="mt-9 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {heroActions.map((action) => {
                 const Icon = action.icon;
                 const className =
                   "button-3d group inline-flex min-h-[3.25rem] items-center justify-between gap-3 overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.075] px-4 py-3 text-sm font-semibold text-white backdrop-blur hover:border-illiniOrange/80 hover:bg-white/[0.12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-illiniOrange focus-visible:ring-offset-4 focus-visible:ring-offset-illiniBlue";
                 const content = (
                   <>
-                    <span className="inline-flex min-w-0 items-center gap-2">
+                    <span className="inline-flex min-w-0 items-center gap-2 whitespace-nowrap">
                       <Icon className="h-4 w-4 shrink-0 text-white/88" />
                       {action.label}
                     </span>
