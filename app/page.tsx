@@ -214,28 +214,16 @@ const heroActions = [
 
 const heroHighlights = [
   {
-    label: "NovoPrint",
-    title: "Turning a 6-DOF arm into a robotic printing platform.",
-    detail: "Ender 3 hotend/extruder mount, tolerance fixes, wiring-aware assembly.",
-    status: "Refining the mechanical package around printed parts and test access."
-  },
-  {
-    label: "ACRC / Summer 2025",
-    title: "Built safer test infrastructure for refrigerant experiments.",
-    detail: "Sensor mounting, insulation, leak checks, pressure testing, LabVIEW capture.",
-    status: "Past research assistant work, not a current role."
-  },
-  {
-    label: "Ewoldt Lab",
-    title: "Patterning heat-cured gels onto fiberglass mesh.",
-    detail: "Gel 3D printing, composite development, servo-controlled deposition ideas.",
-    status: "Exploring how patterned gels change the behavior of mesh composites."
+    label: "Ewoldt Research",
+    title: "Gel-patterned fiberglass mesh composites",
+    detail: "Designing heat-cured gel patterns on fiberglass mesh with a gel 3D printer.",
+    tags: ["Gel printing", "Fiberglass mesh", "Composite testing"]
   },
   {
     label: "Printess",
-    title: "Learning bioprinter construction through a low-cost open platform.",
-    detail: "Syringe extrusion, motion control, clean packaging, build documentation.",
-    status: "Working through construction, calibration, and practical operation."
+    title: "Low-cost 3D bioprinter build",
+    detail: "Working through construction, syringe extrusion, calibration, and operation.",
+    tags: ["Bioprinting", "Motion control", "Syringe extrusion"]
   }
 ];
 
@@ -366,7 +354,7 @@ export default function Home() {
               "radial-gradient(circle at var(--cursor-x, 62%) var(--cursor-y, 42%), rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0.08) 18%, transparent 38%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.09), transparent 26%)"
           }}
         />
-        <div className="section-shell relative z-10 grid min-h-[calc(100vh-4rem)] items-center gap-12 pb-20 pt-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(390px,0.72fr)]">
+        <div className="section-shell relative z-10 grid min-h-[calc(100vh-4rem)] items-center gap-12 pb-20 pt-16 lg:grid-cols-[minmax(0,1fr)_360px]">
           <motion.div
             className="max-w-4xl"
           >
@@ -427,28 +415,20 @@ export default function Home() {
           >
             <div className="absolute -inset-6 rounded-[8px] bg-[radial-gradient(circle_at_50%_12%,rgba(37,99,235,0.24),transparent_58%)] blur-2xl" />
             <div className="card-3d relative overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.075] p-5 text-white backdrop-blur-xl">
-              <div className="flex items-start justify-between gap-5 border-b border-white/10 pb-5">
-                <div>
-                  <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-                    Current Build Space
-                  </p>
-                  <h2 className="mt-3 font-display text-2xl font-semibold leading-tight text-white">
-                    What I am actively making, testing, and figuring out.
-                  </h2>
-                  <p className="mt-3 text-sm leading-6 text-white/62">
-                    A quick look at active projects plus recent lab work that shaped my engineering practice.
-                  </p>
-                </div>
-                <span className="mt-1 flex items-center gap-2 rounded-full border border-copper/30 bg-copper/12 px-3 py-1 text-xs font-semibold text-copper">
-                  <span className="h-2 w-2 rounded-full bg-copper shadow-[0_0_18px_rgba(249,115,22,0.8)]" />
-                  Active + recent
-                </span>
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+                  Current Build Space
+                </p>
+                <span className="h-2 w-2 rounded-full bg-copper shadow-[0_0_18px_rgba(249,115,22,0.8)]" />
               </div>
-              <div className="mt-5 grid gap-3">
+              <p className="mt-4 text-sm leading-6 text-white/62">
+                The hands-on work I am actively developing right now.
+              </p>
+              <div className="mt-5 space-y-4">
                 {heroHighlights.map((item, index) => (
                   <div
                     key={item.label}
-                    className="group rounded-[8px] border border-white/10 bg-ink/36 p-4 transition hover:border-teal/60 hover:bg-white/[0.085]"
+                    className="rounded-[8px] border border-white/10 bg-ink/36 p-4"
                   >
                     <div className="flex items-center justify-between gap-4">
                       <p className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-copper">
@@ -464,9 +444,16 @@ export default function Home() {
                     <p className="mt-2 text-sm leading-6 text-white/62">
                       {item.detail}
                     </p>
-                    <p className="mt-3 border-t border-white/10 pt-3 text-xs font-semibold leading-5 text-teal/90">
-                      {item.status}
-                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/10 bg-white/[0.06] px-2.5 py-1 text-[0.68rem] font-semibold text-white/64"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
