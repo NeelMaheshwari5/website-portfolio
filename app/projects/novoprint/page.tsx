@@ -16,7 +16,7 @@ const contributions = [
     title: "Mechanical design",
     icon: Cog,
     text:
-      "I modeled the base, Z-axis gearbox, and gripper in Fusion 360, designing around printed tolerances, practical assembly, and easy part replacement."
+      "I modeled the base and extruder mounting bracket in Fusion 360, designing around printed tolerances, service access, and clean assembly."
   },
   {
     title: "Electrical integration",
@@ -36,7 +36,7 @@ const tests = [
   "Homed and jogged all six joints to verify motor direction, endstops, and zero positions.",
   "Ran coordinated multi-joint moves along straight and curved paths while checking for stutter or faults.",
   "Returned the arm to marked poses to evaluate repeatable positioning.",
-  "Used small direction changes on the Z-axis to understand the gearbox backlash.",
+  "Checked small direction changes at the joints to understand backlash and repeatability.",
   "Monitored the CAN network while all joints moved and confirmed termination at the two bus ends."
 ];
 
@@ -130,8 +130,8 @@ export default function NovoPrintPage() {
         <div className="section-shell grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="relative aspect-[16/10] overflow-hidden rounded-[8px] border border-line bg-white shadow-panel">
             <Image
-              src="/images/novoprint/z-axis-gearbox.png"
-              alt="Fusion 360 model of the NovoPrint Z-axis gearbox"
+              src="/images/novoprint/assembled-arm.jpeg"
+              alt="Partially assembled NovoPrint robotic arm showing the end effector area"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
@@ -139,49 +139,64 @@ export default function NovoPrintPage() {
           </div>
           <div>
             <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-copper">
-              Z-Axis Gearbox
+              Extruder Mounting
             </p>
             <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
-              A compact printed reducer for vertical motion.
+              A printed bracket that made the extruder easier to mount, adjust, and service.
             </h2>
             <p className="mt-6 text-lg leading-9 text-graphite">
-              I modeled a cycloidal-style stage in Fusion 360. A lobed disk engages
-              multiple pin rollers to spread contact and increase torque, while the
-              split housing locates opposing deep-groove bearings around the input
-              and output. The design was intended to remain printable, serviceable,
-              and adaptable for a lightweight extruder.
+              I designed the extruder mounting bracket so the toolhead could attach
+              securely to the robotic arm without making the rest of the structure
+              difficult to assemble. The bracket was shaped around printed part
+              clearances, fastener access, wiring paths, and the need to remove or
+              adjust the extruder during testing.
             </p>
           </div>
         </div>
       </section>
 
       <section className="py-20 md:py-28">
-        <div className="section-shell grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="lg:order-2">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[8px] border border-line bg-white shadow-panel">
-              <Image
-                src="/images/novoprint/gripper-cad.png"
-                alt="Fusion 360 model of the NovoPrint servo-driven gripper"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
+        <div className="section-shell grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div>
             <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-              Swappable End Effector
+              Assembly Planning
             </p>
             <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
-              A servo-driven gripper built for quick changes.
+              The build sequence was treated as part of the design.
             </h2>
             <p className="mt-6 text-lg leading-9 text-graphite">
-              The gripper converts a small servo rotation into horizontal jaw motion
-              through a geared mechanism. Two guide rails keep the jaws aligned, and
-              textured faces improve hold on printed parts. A four-screw mounting
-              pattern lets the assembly replace the extruder without redesigning the
-              rest of the arm.
+              Beyond individual CAD parts, I worked through how the arm would
+              actually come together on the bench. That meant planning fastening
+              order, keeping tools clear of tight spaces, routing wires before
+              joints became boxed in, and making sure printed parts could be
+              replaced without tearing down the whole mechanism.
             </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              {
+                title: "Fastener Access",
+                text: "Mounting points were placed so common tools could reach them after neighboring parts were installed."
+              },
+              {
+                title: "Wire Routing",
+                text: "Cable paths were considered early so the CAN-bus wiring could move cleanly with the arm."
+              },
+              {
+                title: "Serviceability",
+                text: "The toolhead and printed modules were kept practical to remove, inspect, and revise during testing."
+              }
+            ].map((item) => (
+              <article
+                key={item.title}
+                className="rounded-[8px] border border-line bg-white p-6 shadow-panel"
+              >
+                <h3 className="font-display text-lg font-semibold text-ink">
+                  {item.title}
+                </h3>
+                <p className="mt-4 text-base leading-8 text-graphite">{item.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
