@@ -212,6 +212,24 @@ const heroActions = [
   }
 ];
 
+const heroHighlights = [
+  {
+    label: "Robotic Printing",
+    title: "Ender 3 hotend and extruder mount for a 6-DOF arm",
+    detail: "CAD, printed tolerances, assembly planning"
+  },
+  {
+    label: "Thermal Research",
+    title: "Load-stand setup for flammable refrigerant testing",
+    detail: "Sensors, leak checks, pressure data capture"
+  },
+  {
+    label: "Materials Work",
+    title: "Gel-patterned fiberglass mesh composites",
+    detail: "Servo-driven deposition and test planning"
+  }
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 }
@@ -339,7 +357,7 @@ export default function Home() {
               "radial-gradient(circle at var(--cursor-x, 62%) var(--cursor-y, 42%), rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0.08) 18%, transparent 38%), radial-gradient(circle at 84% 22%, rgba(248, 250, 252, 0.09), transparent 26%)"
           }}
         />
-        <div className="section-shell relative z-10 flex min-h-[calc(100vh-4rem)] items-center pb-20 pt-16">
+        <div className="section-shell relative z-10 grid min-h-[calc(100vh-4rem)] items-center gap-12 pb-20 pt-16 lg:grid-cols-[minmax(0,1fr)_360px]">
           <motion.div
             className="max-w-4xl"
           >
@@ -351,8 +369,8 @@ export default function Home() {
               Neel Maheshwari
             </h1>
             <p className="mt-6 max-w-2xl text-xl leading-8 text-white/72 md:text-2xl">
-              Mechanical engineer building practical systems across CAD, thermal testing,
-              robotic 3D printing, and product development.
+              Mechanical engineer building working hardware across robotic 3D printing,
+              thermal test systems, experimental materials, and product-driven CAD.
             </p>
             <div className="mt-9 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
               {heroActions.map((action) => {
@@ -391,6 +409,46 @@ export default function Home() {
               })}
             </div>
           </motion.div>
+          <motion.aside
+            initial={{ opacity: 0, x: 28 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.18, ease: "easeOut" }}
+            className="relative hidden lg:block"
+            aria-label="Current engineering focus areas"
+          >
+            <div className="absolute -inset-6 rounded-[8px] bg-[radial-gradient(circle_at_50%_12%,rgba(37,99,235,0.24),transparent_58%)] blur-2xl" />
+            <div className="card-3d relative overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.075] p-5 text-white backdrop-blur-xl">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+                  Current Build Space
+                </p>
+                <span className="h-2 w-2 rounded-full bg-copper shadow-[0_0_18px_rgba(249,115,22,0.8)]" />
+              </div>
+              <div className="mt-5 space-y-4">
+                {heroHighlights.map((item, index) => (
+                  <div
+                    key={item.label}
+                    className="rounded-[8px] border border-white/10 bg-ink/36 p-4"
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-copper">
+                        {item.label}
+                      </p>
+                      <span className="font-display text-xs font-semibold text-white/32">
+                        0{index + 1}
+                      </span>
+                    </div>
+                    <h2 className="mt-3 font-display text-lg font-semibold leading-tight text-white">
+                      {item.title}
+                    </h2>
+                    <p className="mt-2 text-sm leading-6 text-white/62">
+                      {item.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.aside>
         </div>
       </section>
 

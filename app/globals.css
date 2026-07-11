@@ -31,6 +31,14 @@ body {
   margin: 0 auto;
 }
 
+body:has(.site-topbar) main {
+  padding-top: 4rem;
+}
+
+body:has(.site-topbar) main > nav:first-child {
+  display: none;
+}
+
 .noise {
   position: relative;
 }

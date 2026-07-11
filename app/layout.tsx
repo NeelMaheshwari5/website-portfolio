@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { SiteTopBar } from "../components/site-top-bar";
 import "./globals.css";
 
 const inter = Inter({
@@ -31,7 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${space.variable}`}>{children}</body>
+      <body className={`${inter.variable} ${space.variable}`}>
+        <SiteTopBar />
+        {children}
+      </body>
     </html>
   );
 }
