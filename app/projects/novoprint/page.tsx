@@ -16,7 +16,7 @@ const contributions = [
     title: "Mechanical design",
     icon: Cog,
     text:
-      "I modeled the base and the Ender 3 hotend and extruder mounting bracket in Fusion 360, designing the bracket to hold the print head at the tip of the arm."
+      "I modeled the base and the Ender 3 hotend and extruder mounting bracket in Fusion 360, designing the bracket to mount both components at the arm tip."
   },
   {
     title: "Electrical integration",
@@ -142,21 +142,21 @@ export default function NovoPrintPage() {
               Extruder Mounting
             </p>
             <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-ink md:text-4xl">
-              A printed bracket for holding the Ender 3 hotend and extruder at the arm tip.
+              A printed bracket to mount the Ender 3 hotend and extruder at the arm tip.
             </h2>
             <p className="mt-6 text-lg leading-9 text-graphite">
               I designed the extruder mounting bracket specifically around the
               Ender 3 hotend, extruder, and the tip geometry of the robotic arm.
-              The goal was simple and practical: hold the print head securely at the end of the
-              mechanism while keeping the connection printable, accessible, and
-              reasonable to remove during testing.
+              The goal was simple and practical: create a secure printed interface
+              that mounted both components to the end of the mechanism while keeping
+              the connection accessible and reasonable to remove during testing.
             </p>
           </div>
         </div>
       </section>
 
       <section className="py-20 md:py-28">
-        <div className="section-shell grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal">
               Assembly Planning
@@ -175,33 +175,33 @@ export default function NovoPrintPage() {
               smoothly.
             </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2">
             {[
               {
                 title: "Fastener Access",
-                text: "Mounting points were placed so common tools could reach them after neighboring parts were installed."
+                text: "Mounting points stayed reachable after neighboring parts were installed."
               },
               {
                 title: "Wire Routing",
-                text: "Cable paths were considered early so the CAN-bus wiring could move cleanly with the arm."
+                text: "Cable paths were planned before joints and covers boxed in the wiring."
               },
               {
                 title: "Serviceability",
-                text: "The toolhead and printed modules were kept practical to remove, inspect, and revise during testing."
+                text: "The hotend, extruder, and printed modules could be removed for inspection."
               },
               {
                 title: "Tolerance Fixes",
-                text: "Sanding and Dremel work helped correct tight printed fits so the mechanism could assemble and move smoothly."
+                text: "Sanding and Dremel work corrected tight printed fits during assembly."
               }
             ].map((item) => (
               <article
                 key={item.title}
-                className="rounded-[8px] border border-line bg-white p-6 shadow-panel"
+                className="card-3d rounded-[8px] border border-line bg-white p-5 shadow-panel"
               >
-                <h3 className="font-display text-lg font-semibold text-ink">
+                <h3 className="font-display text-lg font-semibold leading-tight text-ink">
                   {item.title}
                 </h3>
-                <p className="mt-4 text-base leading-8 text-graphite">{item.text}</p>
+                <p className="mt-3 text-sm leading-6 text-graphite">{item.text}</p>
               </article>
             ))}
           </div>
